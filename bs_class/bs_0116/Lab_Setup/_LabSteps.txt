@@ -1,0 +1,144 @@
+﻿Lab: Bootstrap 安裝
+
+
+1.	安裝 Bootstrap
+
+
+1.1	瀏覽 Bootstrap 官方網站，
+    網址: http://getbootstrap.com/
+
+
+1.2	點按網頁右上角的"Download"，
+    從下載頁下載 .zip 檔並且解壓縮。
+    <Hint>找 Download 字樣
+
+
+1.3	觀察本工作目錄的資料夾架構
+	<Note>
+    與步驟1.2解壓縮後的資料夾架構相同。
+
+
+1.4	請確認我們的 js 資料夾，錢老師額外多放了兩個檔案:
+    - jquery.min.js
+    - popper.min.js
+
+
+1.5	在本工作目錄建立一個新的 HTML文件，檔名: lab.html，初始內容如下:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js" ></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>    
+</head>
+<body>
+
+
+</body>
+</html>
+
+
+<Note>
+另一個作法，從 CDN 引用 Bootstrap:
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+
+2.	建立導覽列
+
+
+2.1	連往 Bootstrap 官方網站，
+    網址: https://getbootstrap.com
+
+
+2.2	點按畫面最上方的 Documentation 連結，
+    再點按左側的 Components
+
+
+2.3	點按左側邊欄的「Navbar」。
+    <Note> 上述步驟 2.1~2.3 後的網址:
+    https://getbootstrap.com/docs/4.4/components/navbar/
+
+
+2.4	選取並且複製第一個例子的 HTML 內容
+
+
+2.5	貼入複製的內容到 lab.html 的 <body> 區塊 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+2.6 在瀏覽器檢視作品。
+    <Note>咦! 為什麼下拉式選單出不來?
+
+
+2.7 請試著解決 2.6 的問題。
+
+
+
+
+3.  試用 navbar 導覽列
+
+3.1 如果將上述的 <nav> 置入下列結構，效果如何呢?
+<body>
+    <div class="container">
+
+        <!-- nav 放這裡 -->
+
+    </div>
+</body>
+
+
+3.2	請問，導覽列"Drowdown"展開後的子選單，
+    內含一些分隔線，是怎麼做到的？
+
+
+3.3	請再試作另一個 Drowdown 子選單。
+
+
+3.4	步驟 2.8 的 Drowdown 子選單，
+    如果想靠向整個導覽列的右側，該怎麼做？
+

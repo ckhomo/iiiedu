@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<style>
+    body {
+        font-family: 微軟正黑體, simhei, Arial;
+    }
+
+    .progress {
+        margin: 10px;
+        height: 50px;
+        width: 80%;
+    }
+
+    div.choice {
+        padding: 10px;
+        margin: 3px 0;
+        border: 3px solid black;
+        /* width: 50%; */
+        float: center;
+        text-align: center;
+    }
+
+    div.result {
+        padding: 10px;
+        border: 3px solid red;
+        /* width: 50%; */
+        float: center;
+        text-align: center;
+    }
+    div#endgame{
+        font-size: larger;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+    div.changelog {
+        font-weight: bold;
+        font-size: large;
+        text-align: center;
+    }
+
+    /* input[type="button"] {
+        font-family: cursive;
+        font-weight: bold;
+    } */
+
+    input#choice_rbtn,
+    input#choice_lbtn {
+        background-color: lightgreen;
+        width: 100%;
+        border: none;
+        text-align: center;
+    }
+
+    .result>input {
+        background-color: lightpink;
+    }
+
+    span#total,
+    span#count {
+        font-weight: bolder;
+    }
+
+    .pgs {
+        float: left;
+        font-size: larger;
+        font-weight: bolder;
+        margin: auto;
+    }
+</style>
+<script src="high_n_low.js"></script>
+<div class='d-flex' style='background-color: lightyellow'>
+    <h1 class='float:left' style="margin:5px; font-weight:bold;">Try reach 1000 points!</h1>
+    <input type="text" style="margin:5px" placeholder="輸入玩家名稱:" id="player_name">
+    <input type="button" style="margin:5px;" value="進入" onclick="displayMain()">
+</div>
+<h6 style="position:fixed; bottom:5px; left: 5px;">
+    Written in 2020.02.13</h6>
+
+<body>
+    <!--Dynamic progress bar:-->
+    <div class='container' style="display: none;" id='bar'>
+        <div class='pgs'>目前進度：</div>
+        <div class="progress">
+            <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                <span id="current-progress"></span>
+            </div>
+        </div>
+    </div>
+    <div class='row container-fluid' style="display: none;" id='content'>
+        <div class="col-md-4">
+            <div class="result">
+                累計積分：<span id="total"></span><br>
+                累計次數：<span id="count"></span><br>
+                <input type="button" id='start_btn' value="開始/重置" onclick="startGame()">
+            </div>
+            <div class="choice">
+                可得積分：<span id="pget_l"></span><br>
+                成功機率：<span id="win_l"></span>%<br>
+                <!-- 失敗機率:<span id="lose_l"></span><br> -->
+                <input type="button" id="choice_lbtn" value="選擇" disabled
+                    onclick="rateCheck(document.getElementById('pget_l').innerHTML,document.getElementById('win_l').innerHTML)">
+            </div>
+            <div class="choice">
+                可得積分：<span id="pget_r"></span><br>
+                成功機率：<span id="win_r"></span>%<br>
+                <!-- 失敗機率:<span id="lose_r"></span><br> -->
+                <input type="button" id="choice_rbtn" value="選擇" disabled
+                    onclick="rateCheck(document.getElementById('pget_r').innerHTML,document.getElementById('win_r').innerHTML)">
+            </div>
+            <div id="endgame">
+                <!-- 說明:遊戲開始後會產生兩組數字，每組會有一成功機率與成功/失敗後會變動的分數。選擇你認為報酬率較高的組合來到達1000分! -->
+            </div>
+        </div>
+
+        <div class='col-md-8 changelog'>
+            ChangeLog:
+            <div id='output'></div>
+        </div>
+    </div>
+</body>

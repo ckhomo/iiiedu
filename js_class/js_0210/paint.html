@@ -1,0 +1,73 @@
+<canvas id='canvas' width='480' height="320" style="border: 1px solid black;">
+</canvas>
+<script>
+    let ctx = canvas.getContext('2d');//Rendering in 2D.
+    let bg = new Image();//Declare 'bg' as a new Image object.
+    bg.src = 'bg.jpg';
+    let ball1 = new Image(); let ball2 = new Image(); let ball3 = new Image();
+    ball1.src = 'ball.png'; ball2.src = 'ball2.png'; ball3.src = 'ball3.png';
+    let ballImg = [ball1, ball2, ball3];//Array filled with Image objects.
+    let balls = [];//Element: Ball
+    // let Ball = {
+    //     x: 0,
+    //     y: 0,
+    //     dx: 8,
+    //     dy: 8,
+    //     img: 0,
+    // };
+    //Read obj_orient.html for the difference.
+    let Ball = function () {
+        this.x = 0;
+        this.y = 0;
+        this.dx = 8;
+        this.dy = 8;
+        this.img = 0;
+    }
+    bg.onload = function () {//Run when bg.jpg onloaded.
+        ctx.drawImage(bg, 0, 0);
+    }
+    function refreshAll() {
+        ctx.drawImage(bg, 0, 0);
+        for (let ball of balls) {
+            ctx.drawImage(ballImg[ball.img], ball.x, ball.y);
+        }
+    }
+    setInterval(refreshAll, (1 / 60) * 1000);//About 60fps.
+
+    canvas.onmousedown = function (event) {
+        let ball = new Ball();
+        // ball.x = event.offsetX;
+        // ball.y = event.offsetY;
+        ball.x = event.offsetX - ball1.width / 2;
+        ball.y = event.offsetY - ball1.height / 2;
+        //Fix bugs when click near margin.
+        if (ball.x <= 0) ball.x += ball1.width / 2;
+        if ((ball.x + ball1.width) > canvas.width) ball.x -= ball1.width / 2;
+        if (ball.y <= 0) ball.y += ball1.height / 2;
+        if ((ball.y + ball1.height) > canvas.height) ball.y -= ball1.height / 2;
+        //Randomize initial velocity.
+        ball.dx = Math.floor(Math.random() * 17) - 8;
+        ball.dy = Math.floor(Math.random() * 17) - 8;
+        ball.img = Math.floor(Math.random() * 3);
+        balls.push(ball);//Make refreshAll visible.
+    }
+    function moveBall(ball) {
+        if (ball.x < 0 || (ball.x + ball1.width) > canvas.width) {
+            ball.dx *= -1;
+        }
+        if (ball.y < 0 || (ball.y + ball1.height) > canvas.height) {
+            ball.dy *= -1;
+        }
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+    }
+    function goBall() {
+        for (let ball of balls) {
+            moveBall(ball);//Move all balls in balls[]
+        }
+    }
+    setInterval(goBall, 0.03 * 1000);//Velocity of the ball.
+    document.onkeydown = function (event) {
+        console.log(event.keyCode);//Detect codes from keyboard.
+    };
+</script>

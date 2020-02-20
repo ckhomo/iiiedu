@@ -1,0 +1,29 @@
+Bootstrap 4 Colors
+https://www.w3schools.com/bootstrap4/bootstrap_colors.asp
+
+
+Bootstrap 4 Utilities
+https://www.w3schools.com/bootstrap4/bootstrap_utilities.asp
+
+
+Bootstrap 4 Modal
+https://www.w3schools.com/bootstrap4/bootstrap_modal.asp
+https://www.w3schools.com/bootstrap4/bootstrap_ref_js_modal.asp
+
+
+假圖
+https://dummyimage.com
+
+
+Bootstrap 4 Carousel
+https://www.w3schools.com/bootstrap4/bootstrap_carousel.asp
+https://www.w3schools.com/bootstrap4/bootstrap_ref_js_carousel.asp
+
+
+Bootstrap 4 Tutorial
+https://www.w3schools.com/bootstrap4
+
+
+Bootstrap 4 Class Reference
+https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp
+

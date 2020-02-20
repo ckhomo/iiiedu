@@ -1,0 +1,33 @@
+Code
+https://getbootstrap.com/docs/4.0/content/code/
+
+
+Figures
+https://getbootstrap.com/docs/4.0/content/figures/
+
+
+Bootstrap 4 Tables
+https://www.w3schools.com/bootstrap4/bootstrap_tables.asp
+
+
+Bootstrap 4 Cards
+https://www.w3schools.com/bootstrap4/bootstrap_cards.asp
+
+
+Bootstrap Form
+https://www.w3schools.com/bootstrap4/bootstrap_forms.asp
+https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp
+https://www.w3schools.com/bootstrap4/bootstrap_forms_custom.asp
+
+
+Bootstrap Form Builder
+https://bootstrapformbuilder.com/
+
+
+Bootstrap 4 Colors
+https://www.w3schools.com/bootstrap4/bootstrap_colors.asp
+
+
+Bootstrap 4 Utilities
+https://www.w3schools.com/bootstrap4/bootstrap_utilities.asp
+

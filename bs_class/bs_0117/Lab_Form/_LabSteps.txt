@@ -1,0 +1,279 @@
+Lab -- Bootstrap 之表單版型
+
+
+1.	用編輯器開啟 Lab_0.html，檢視網頁內容
+
+
+2.	應用 Bootstrap 表單
+
+
+2.1	找到 <!-- HTML 內容放這邊 -->，置入下列內容:
+
+    <form>
+            <label for="userNameTextBox">
+                <i class="fa fa-user"></i> 帳號:
+            </label>
+            <input type="text" 
+                    id="userNameTextBox" 
+                    placeholder="輸入帳號或E-mail" />
+    </form>
+
+
+2.2	在瀏覽器檢視作品
+
+
+2.3	用一個 <div> 包住 label 與 input，
+    <div> 設定 class="form-group" 屬性:
+
+
+2.4	針對 <input>，加入 class="form-control" 屬性
+	<Note> 2.3 + 2.4 完成後的表單:
+
+    <form>
+        <div class="form-group">
+            <label for="userNameTextBox">
+                <i class="fa fa-user"></i> 帳號:
+            </label>
+            <input type="text" 
+                class="form-control"
+                id="userNameTextBox" 
+                placeholder="輸入帳號或E-mail" />
+        </div>
+    </form>
+
+
+2.5	在瀏覽器檢視作品。
+
+	<Note> 標籤與文字輸入方塊的樣式效果有何變化?
+
+
+2.6	仿上述格式，在表單繼續加入密碼欄位:
+
+        <div class="form-group">
+            <label for="userNameTextBox">
+                <i class="fa fa-lock"></i> 密碼:
+            </label>
+            <input type="password" 
+                class="form-control"
+                id="userNameTextBox" 
+                placeholder="請在此輸入密碼" />
+        </div>
+
+
+2.7	再加入核取方塊
+	<Note> 請留意這次的 label 與 input 對應方式，與前兩個文字輸入方塊的作法不同。
+
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> 記住我(下次自動登入)
+        </label>
+    </div>
+
+
+2.8	登入與取消按鈕:
+    <button type="button" 
+            id="loginButton" 
+            class="btn btn-outline-success">
+            <i class="fa fa-check"></i> 登入
+    </button>
+    <button type="button" 
+            id="cancelButton" 
+            class="btn btn-outline-secondary">
+            <i class="fa fa-remove"></i> 取消
+    </button>        
+
+
+
+
+3.	inline 型表單
+
+
+3.1	找到表單的開始標籤，加入 class="form-inline" 屬性，像這樣:
+	<form class="form-inline">
+
+
+3.2	在瀏覽器檢視作品。
+
+
+(Optional)
+3.3 如果 inline 型表單的各個控制項之間要稍微保留一點空間，
+    要怎麼做?
+
+
+
+
+4.	水平表單
+	<Note> 標籤與控制項在同一橫列，標籤在左，文字控制項在右
+
+
+4.1	修改 <form> 的開始標籤，
+    去除 class="form-inline"
+
+
+4.2	針對「帳號」的那個 Label，加上下列屬性
+    class="col-form-label col-2 text-right"
+
+
+4.3	id="userNameTextBox" 的文字輸入方塊，class 屬性改成:
+    class="col-10 form-control"
+
+
+4.4 包住帳號的那個 div，類別清單的內容改成:
+    <div class="form-group row">
+
+	<Note> 
+    基本上，與之前學過的 Grid System 一樣，都是以 12 等分為基礎，
+
+	<Note> 綜合 4.2 ~ 4.4，HTML 內容如下:
+
+        <div class="form-group row">
+            <label class="col-form-label col-2 text-right" 
+                for="userNameTextBox">
+                <i class="fa fa-user"></i> 帳號:
+            </label>
+            <input type="text" 
+                class="col-10 form-control"
+                id="userNameTextBox" 
+                placeholder="輸入帳號或E-mail" />
+        </div>
+
+
+4.5	請仿 4.2 ~ 4.4，針對「密碼」那欄，也比照辧理:
+
+        <div class="form-group row">
+            <label class="col-form-label col-2 text-right"
+                for="userNameTextBox">
+                <i class="fa fa-lock"></i> 密碼:
+            </label>
+            <input type="password" 
+                class="col-10 form-control"
+                id="userNameTextBox" 
+                placeholder="請在此輸入密碼" />
+        </div>
+
+
+4.6	核取方塊與文字方塊切齊:
+
+        <div class="form-group row">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="form-check col-10">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox"> 記住我(下次自動登入)
+                </label>
+            </div> 
+        </div>
+
+	<Note> 也是以 12 等分為基礎
+
+
+4.7	兩個按鈕也仿核取方塊的作法，挪到 2/12 的位置:
+
+        <div class="form-group row">
+            <div class="col-sm-2">&nbsp;</div>
+            <div class="col-sm-10">
+                <button type="button" 
+                        id="loginButton" 
+                        class="btn btn-outline-success">
+                        <i class="fa fa-check"></i> 登入
+                </button>
+                <button type="button" 
+                        id="cancelButton" 
+                        class="btn btn-outline-secondary">
+                        <i class="fa fa-remove"></i> 取消
+                </button> 
+            </div>
+        </div>
+
+
+
+
+5.  傳送表單資料給後端程式
+
+
+5.1 在 form 元素的開始標籤，加入下列兩個屬性:
+    method="post" action="http://server2020.epizy.com/echo.php"
+    
+    像這樣:
+        <form class="form-horizontal"
+            method="post" action="http://server2020.epizy.com/echo.php">
+        ...
+        ...
+        </form>
+
+    <Note>
+    http://server2020.epizy.com/echo.php 是錢老師提供的簡單後端程式，
+    功能是複誦/報告它收到的資料。
+    
+
+5.2 針對 id="loginButton" 的按鈕，
+    將 type 屬性的屬性內容改成 submit
+
+
+5.3 針對 id="loginButton" 的按鈕，加入下列兩個屬性:
+
+    name="loginOrCancel" value="login"
+
+    
+5.4 針對 id="cancelButton" 的按鈕，
+    將 type 屬性的屬性內容改成 submit
+
+
+5.5 針對 id="cancelButton" 的按鈕，加入下列兩個屬性
+    name="loginOrCancel" value="cancel"
+
+
+<Note> 完成上述 5.2~5.5 步驟後，兩個按鈕的HTML內容如下:
+
+    <button type="submit" 
+            id="loginButton" 
+            name="loginOrCancel" value="login"
+            class="btn btn-outline-success">
+            <i class="fa fa-check"></i> 登入
+    </button>
+    <button type="submit" 
+            id="cancelButton" 
+            name="loginOrCancel" value="cancel"
+            class="btn btn-outline-secondary">
+            <i class="fa fa-remove"></i> 取消
+    </button> 
+
+
+5.6 在瀏覽器檢視網頁作品。分別點按登入、取消按鈕。
+
+    <Note> 
+    請問，點按「登入」按鈕時，http://server2020.epizy.com/echo.php 收到的資料欄位名稱，
+    是 loginButton 還是 loginOrCancel?
+    
+    <Note> 
+    表單的 method 屬性值如果改成 get，有何差別?
+
+
+5.7 針對 id="userNameTextBox" 的文字輸入方塊，加入下列屬性:
+    name="userName"
+
+
+5.8 針對 id="passwordTextBox" 的文字輸入方塊，加入下列屬性:
+    name="password"
+
+
+5.9 針對 id="rememberMeCheckBox" 的核取方塊，加入兩個屬性:
+    name="rememberMe" value="yes"
+
+
+5.A 在瀏覽器檢視網頁作品。輸入帳號、密碼後，點按「登入」按鈕，
+    檢視 http://server2020.epizy.com/echo.php 報告的資料。
+    
+    <Note> 
+    點按「登入」按鈕時，http://server2020.epizy.com/echo.php 收到的資料欄位名稱，
+    是 id 還是 name ?
+
+    <Note> 
+    如果沒有勾選「記住我」，
+    http://server2020.epizy.com/echo.php 有收到核取方塊的資料嗎?
+
+
+
+<Note>
+推薦一個 Bootstrap 的表單產生器:
+https://bootstrapformbuilder.com/
+

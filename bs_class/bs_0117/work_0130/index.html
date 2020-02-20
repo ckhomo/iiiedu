@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montains at Beitou</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>    
+    <script src="js/bootstrap.min.js" ></script>
+
+    <style>
+        :target::before {
+            content: "";
+            display: block;
+            height: 60px; /* fixed header height*/
+            margin: -60px 0 0; /* negative fixed header height */
+        }
+        .nav-link, .dropdown-item{
+            color: limegreen;
+            font-family: Arial, Helvetica, sans-serif, DFKai-SB;
+        }
+        .nav-link:hover, .dropdown-item:hover, .navbar-nav > li > .dropdown-menu{
+            color: lightgreen;
+            background-color: lightslategray;
+        }
+        .map-container{
+            overflow:hidden;
+            padding-bottom:56.25%;
+            position:relative;
+            height:0;
+        }
+        .map-container iframe{
+            left:0;
+            top:0;
+            height:100%;
+            width:100%;
+            position:absolute;
+        }
+    </style>
+
+</head>
+<body>
+<!-- Navbar, lists and logo. -->
+    <nav class="navbar navbar-expand-sm bg-dark sticky-top">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            Logo 
+        </a>
+        <ul class="navbar-nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link 3</a>
+          </li>
+          <li class="btn-group">
+            <button type="button"
+                    class="btn btn-dark dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                Action
+              </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#中正山">中正山</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#紗帽山">紗帽山</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#向天山">向天山</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#大屯山">大屯山</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#七星山">七星山</a>
+            </div>
+          </li>
+        </ul>
+    </nav>
+    <p></p>
+<!-- Key visual -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Hello, world!</h1>
+            <p>...</p>
+            <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+        </div>
+    </div>
+
+<!-- Introductions and contents -->
+    <div class="container-fluid">
+        <!-- Control the column width, and how they should appear on different devices -->
+        <div class="row no-gutters">
+            <div class="col-sm-3" style="background-color:lightgray;">
+                <div>
+                    <div class="" style="background-color:lightskyblue;"><a name="中正山"></a>中正山</div>
+                    <div class="" style="background-color:lightgray;">pic</div>
+                </div>
+            </div>
+            <div class="col-sm-9" style="background-color:gray;">text</div>
+        </div>
+        <p></p>
+        <div class="row no-gutters">
+            <div class="col-sm-9" style="background-color:gray;">text</div>
+            <div class="col-sm-3" style="background-color:lightgray;">
+                <div>
+                    <div class="" style="background-color:lightskyblue;"><a name="紗帽山"></a>紗帽山</div>
+                    <div class="" style="background-color:lightgray;">pic</div>
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <div class="row no-gutters">
+            <div class="col-sm-3" style="background-color:lightgray;">
+                <div>
+                    <div class="" style="background-color:lightskyblue;"><a name="向天山"></a>向天山</div>
+                    <div class="" style="background-color:lightgray;">pic</div>
+                </div>
+            </div>
+            <div class="col-sm-9" style="background-color:gray;">text</div>
+        </div>
+        <p></p>
+        <div class="row no-gutters">
+            <div class="col-sm-9" style="background-color:gray;">text</div>
+            <div class="col-sm-3" style="background-color:lightgray;">
+                <div>
+                    <div class="" style="background-color:lightskyblue;"><a name="大屯山"></a>大屯山</div>
+                    <div class="" style="background-color:lightgray;">pic</div>
+                </div>
+            </div>
+        </div>
+        <p></p>
+        <div class="row no-gutters">
+            <div class="col-sm-3" style="background-color:lightgray;">
+                <div>
+                    <div class="" style="background-color:lightskyblue;"><a name="七星山"></a>七星山</div>
+                    <div class="" style="background-color:lightgray;">pic</div>
+                </div>
+            </div>
+            <div class="col-sm-9" style="background-color:gray;">text</div>
+        </div>
+        <p></p>
+    </div>
+
+<!-- Transportation Info -->
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-sm-6" style="background-color: lightyellow;">
+                <div class="" style="background-color: lightskyblue;">地圖</div>
+                <div class="" style="background-color: lightyellow;">
+                    <div id="map-container-google-3" class="z-depth-1-half map-container-3">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25365.35463534255!2d121.54972162832415!3d25.178858975285692!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5c0be3a34fc3b079!2z6Zm95piO5bGx5ZyL5a625YWs5ZyS!5e0!3m2!1szh-TW!2stw!4v1579242310408!5m2!1szh-TW!2stw"
+                                width="600"
+                                height="450"
+                                frameborder="0"
+                                style="border:0;"
+                                allowfullscreen="">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="background-color: lightgreen;">Text message</div>
+        </div>
+    </div>
+    <br>
+
+    <div class="d-flex flex-row-reverse card-footer">
+        footer here.
+    </div>
+</body>
+<script>
+    //命名為 top_scroll_percent_bar
+function top_scroll_percent_bar() {
+  $("body").append("<div class=top_scroll_percent_bar_bg></div>"); //產生進度條背景物件
+  $("body").append("<div class=top_scroll_percent_bar></div>"); //進度條 Bar
+  $("body").append("<div class=percent_text></div>"); //進度條 % 文字
+ 
+  //進度條背景 CSS 樣式
+  $(".top_scroll_percent_bar_bg").css({
+    "position": "fixed",
+    "width": "100%",
+    "background": "rgba(0,0,0,0.33)",
+    "width": "100%",
+    "height": "14px",
+    "top": 0,
+    "z-index": 100001,
+  });
+ 
+  //進度條 Bar CSS 樣式
+  $(".top_scroll_percent_bar").css({
+    "position": "fixed",
+    "background": "#0099ff",
+    "width": 0,
+    "height": "14px",
+    "top": 0,
+    "z-index": 100002,
+  });
+ 
+  //進度條 % 文字 CSS 樣式
+  $(".percent_text").css({
+    "position": "fixed",
+    "width": "100%",
+    "font-size": "9pt",
+    "color": "#ffffff",
+    "line-height": "14px",
+    "text-align": "center",
+    "top": 0,
+    "z-index": 100003,
+  });
+ 
+  function window_scroll() {
+    var window_height = $(window).height(); //視窗可視高度
+    var total_y = $("body")[0].scrollHeight - window_height; // Y 軸可捲動長度 = Y 軸總長 - 視窗可視高度
+    var scroll_y = $(this).scrollTop(); // Y 軸位置 $(window).scrollTop()
+    $(".top_scroll_percent_bar").css("width", (scroll_y / total_y * 100) + "%"); // Y 軸位置百分比 : 圖像化
+    $(".percent_text").html(parseInt(scroll_y / total_y * 100) + " % "); // Y 軸位置百分比 : 整數 %
+  }
+ 
+  //初始狀態載入
+  window_scroll();
+ 
+  //捲動時觸發
+  $(window).scroll(window_scroll);
+ 
+  //視窗變動時觸發
+  $(window).resize(window_scroll);
+};
+ 
+//載入此 js 文件，所有內容載入完成後即呼叫 top_scroll_percent_bar()
+window.onload = function() {
+  top_scroll_percent_bar();
+};
+</script>
+</html>

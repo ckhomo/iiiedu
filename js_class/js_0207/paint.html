@@ -1,0 +1,56 @@
+<h1 id='header'></h1>
+<input id='clear'>
+<input id="left">
+<input id="right">
+<hr>
+<canvas id="canvas" width="480" height="320" style="border: 1px solid black"></canvas>
+<!-- <hr><input type="button" value="Clear" onclick="ctx.clearRect(0, 0, canvas.width, canvas.height)"> -->
+<script>
+    header.innerHTML = 'For signature';
+    clear.type = 'button';
+    clear.value = 'Clear';
+    clear.onclick = function () {
+        ctx.clearRect(0, 0, 480, 320);
+    };
+    let ctx = canvas.getContext('2d');
+
+    ctx.strokeStyle = 'rgb(0,0,255)';
+    let isDrag = false;
+
+    canvas.onmousedown = function (event) {
+        isDrag = true;
+        // console.log('down:' + event.offsetX + 'x' + event.offsetY);
+        ctx.beginPath();
+        ctx.moveTo(event.offsetX, event.offsetY);
+    }
+    canvas.onmouseup = function (event) {
+        isDrag = false;
+        // console.log('up:' + event.offsetX + 'x' + event.offsetY);
+    }
+    canvas.onmousemove = function (event) {
+        if (!isDrag) return;
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+        // console.log('move:' + event.offsetX + 'x' + event.offsetY);
+    }
+    let ball = new Image();
+    let ballX = 200, ballY = 200;
+    ball.src = "ball.png";
+    ball.onload = function () {
+        ctx.drawImage(ball, ballX, ballY);
+    }
+
+    left.type = 'button'; left.value = ' <- ';
+    left.onclick = function () {
+        ballX -= 4;
+        ctx.clearRect(0, 0, 480, 320);
+        ctx.drawImage(ball, ballX, ballY);
+    };
+
+    right.type = 'button'; right.value = ' -> ';
+    right.onclick = function () {
+        ballX += 4;
+        ctx.clearRect(0, 0, 480, 320);
+        ctx.drawImage(ball, ballX, ballY);
+    };
+</script>

@@ -1,0 +1,24 @@
+<script src="util.js"></script>
+<script>
+    let vremya = new Date();
+    // document.write(date);
+    let year1 = vremya.getFullYear();//2020
+    let year2 = vremya.getUTCFullYear();//2020
+    let year3 = vremya.getYear();//120
+    // document.write(year1+"<br>"+year2+"<br>"+year3);
+
+    let month = vremya.getMonth() + 1;//0~11+1;
+    //Present self-define utilities.
+    let minguo = vremya.getTWYear();
+    let week = vremya.enWeek();
+    let zh_week = vremya.zhWeek();
+    let jp_week = vremya.jpnWeek();
+    // document.write("民國" + minguo + "年" + '<hr>');
+    // document.write("Today is " + week + "." + '<hr>');
+    // document.write("今天禮拜" + zh_week + "。" + '<hr>');
+    // document.write("本日は" + jp_week + "曜日です。" + '<hr>');
+
+</script>
+<script>
+    
+</script>

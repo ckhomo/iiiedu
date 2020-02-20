@@ -1,0 +1,24 @@
+<script>
+    let a = {//Object
+        x: 10,
+        y: 3,
+    }
+    document.write(a.x + 'x' + a.y + '<hr>');
+    let b = a;//Copy entire object 'a'
+    document.write(b.x + 'x' + b.y + '<hr>');
+    b.x = 20;//Set b.x=20: a.x also affected! Both in same directory.
+    document.write(a.x + '&' + b.x + '<hr>');
+
+    let c = function () {//Function
+        this.x = 10;
+        this.y = 3;
+    }
+    let d = new c();
+    let e = new c();
+    document.write(d.x + 'x' + d.y + '<hr>');
+    document.write(e.x + 'x' + e.y + '<hr>');
+    d.x = 20;
+    document.write(d.x + 'x' + d.y + '<hr>');
+    document.write(e.x + 'x' + e.y + '<hr>');
+    
+</script>

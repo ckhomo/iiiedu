@@ -1,0 +1,112 @@
+Lab: Bootstrap Card
+
+
+1.  Getting Start
+
+
+1.1 在瀏覽器開啟 Lab_32.html，先了解一下我們要做的是什麼。
+
+
+1.2 以 HTML 編輯器開啟 Lab_0.HTML，檢視目前進度與版面構成。
+
+
+(Optional)
+1.3 請問要如何將中文字體改成黑體字?
+
+
+
+
+2.  使用 Card
+
+
+2.1 在左側的（第一個） col 內，
+    置入一個 div，該 div 套用 card 類別
+
+
+2.2 在步驟 2.1 的 div 內部再多置入三個 div，
+    三個 div 由上而下依序套用下列類別:
+
+    - card-header
+    - card-body
+    - card-footer
+
+
+    2.1、2.1 完成後的內容:
+        <div class="col">
+            
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
+
+        </div>
+
+
+2.3 在 <div class="card-header">，寫作下列內容:
+    Spindasis lohita formosana
+
+
+2.4 在 <div class="card-body">，貼入下列內容:
+    <h3>虎灰蝶</h3>
+    <p>棲息在常綠闊葉林等棲所。一年多代。飛行活潑快速。會訪花。幼蟲植食性，食性雜而與懸巢舉尾蟻有專性交互作用。（資料來源：dearlep.tw）</p>
+
+
+2.5 針對步驟 2.4 的 h3 標題，套用 card-title 類別
+
+
+2.6 針對步驟 2.4 的 p 段落，套用 card-text 類別
+    <div class="card-body">
+        <h3 class="card-title">虎灰蝶</h3>
+        <p class="card-text">棲息在常綠闊葉林等棲所。一年多代。飛行活潑快速。會訪花。幼蟲植食性，食性雜而與懸巢舉尾蟻有專性交互作用。（資料來源：dearlep.tw）</p>
+    </div>
+
+
+2.7 在 <div class="card-footer">，貼入下列內容:
+    <a href="#" class="card-link">詳細資料</a>
+
+
+(Optional)
+2.8 如何將步驟 2.7 的超連結變成按鈕，按鈕如何移往右側。
+
+
+2.9 在 class="card" 與 class="card-header" 這兩行之間，
+    貼入下列內容:
+    <img class="img-fluid" src="images/lohita.jpg" />
+
+    <Note>
+    請問 class="img-fluid" 是必要的嗎?
+
+
+
+
+3.  湊齊小虎隊
+
+
+3.1 請利用下列內容，完成另外兩欄，湊齊小虎隊。
+    圖檔: syamaj.jpg
+    學名: Spindasis syama
+    俗名: 三斑虎灰蝶
+    描述: 臺灣地區分布於本島低、中海拔地區，但北部較少見。
+    ----
+    圖檔: kuyaniana.jpg
+    學名: Spindasis kuyaniana
+    俗名: 蓬萊虎灰蝶
+    描述: 種小名kuyaniana源自嘉義阿里山鄒族原住民地名。
+
+
+3.2 目前，三張 card 的高度並不統一，
+    請試試看將它們都設成相同高度。
+
+
+
+
+<Note>
+參考下列文件，多試試 Card 的其他功能:
+https://www.w3schools.com/bootstrap4/bootstrap_cards.asp

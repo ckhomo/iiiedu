@@ -1,0 +1,21 @@
+-- create table bk_class select * from students;
+-- rename table bk_class to bk_students;
+-- drop table bk_stu;
+-- create table bk_stu select * from students;
+-- desc bk_stu;
+-- insert into bk_stu(cname, cBirthday)values('Lee','1995-08-24');
+-- insert into bk_stu(cname, cBirthday)values('黃宏成台灣阿成世界偉人財神總統','1988-08-08');
+-- select * from bk_stu;
+-- SET SQL_SAFE_UPDATES=0;
+-- update bk_stu set cname='John', cemail='huehuehue@gmail.com'where cid=00;
+-- update bk_stu set csex='M' where cid<100;
+SET SQL_SAFE_UPDATES=1;
+-- select.. from.. where.. group by.. having.. order by.. limit..
+-- delete from bk_stu where cid=00;
+-- delete from bk_stu;
+-- select * from bk_stu where cid<7;
+-- select * from bk_stu limit 7,1;
+-- select cname, csex, cbirthday from bk_stu;
+-- select now();
+-- select csex as '性別', cname as '姓名', cbirthday as '生日' from bk_stu;
+select * from bk_stu;

@@ -1,0 +1,58 @@
+<style>
+    input {
+        margin: 3px;
+    }
+</style>
+<!-- <script src="life.js"> -->
+<script>
+    //不交房租,
+    //不生小孩,
+    //時間一到,
+    //自動登出。
+    //A simple model for reference.
+    // ________________________
+    // |                    ^ | 
+    // | totalDeposit         | 
+    // |________________INCOME|___________________________ ^
+    // |<--now                |<--retire         death-->| SPENT
+    // |____________________v_|__________________________| v
+    function calcLife(age, dea, out, ret) {
+        // console.log(age, dea, out, ret);
+        let ans_div = document.getElementById("ans_div");
+        ans_div.removeAttribute("style", "display");
+        //Summon the answer div.
+        var m_inc = Number(generateIncome(age, dea, out, ret));
+        var dep = Number(totalDeposit(age, ret, m_inc, out));
+        document.getElementById('inc').innerHTML = m_inc;
+        document.getElementById('wor').innerHTML = ret - age;
+        document.getElementById('dep').innerHTML = dep;
+    }
+    function totalSpent(age, dea, out) {
+        //Total spent from now to death.
+        var t_spt = (dea - age) * out * 12;
+        return t_spt;
+    }
+    function generateIncome(age, dea, out, ret) {
+        //Income needed for your lifespan.
+        var t_spt = totalSpent(age, dea, out);
+        var m_inc = (t_spt / ((ret - age) * 12)).toFixed(4);
+        return m_inc;
+    }
+    function totalDeposit(age, ret, m_inc, out) {
+        //All money you saved when retire.
+        var dep = (ret - age) * (m_inc - out) * 12;
+        return dep;
+    }
+</script>
+<!--應考慮當前存款/負債-->
+<input type="text" id='age' placeholder="現在年紀:"><br>
+<input type="text" id='ret' placeholder="幾歲退休:"><br>
+<input type="text" id='dea' placeholder="幾歲往生:"><br>
+<input type="text" id='out' placeholder="每月花費(萬):"><br>
+<input type="button" value="Result:"
+    onclick="calcLife(Number(document.getElementById('age').value),Number(document.getElementById('dea').value),Number(document.getElementById('out').value),Number(document.getElementById('ret').value))"><br>
+<div id='ans_div' style="display: none;">
+    共工作 <span id='wor'></span>年<br>
+    退休時存款 <span id='dep'></span>萬<br>
+    所需最低月薪為 <span id='inc'></span>萬<br>
+</div>

@@ -1,0 +1,199 @@
+<style>
+    table {
+        width: 100%;
+        border: 5px solid black;
+    }
+
+    table td,
+    table tr {
+        border: 1px solid black;
+    }
+</style>
+<table>
+    <script>
+        const ROW = 1;
+        const STA = 2;
+        const COL = 9;
+        for (let k = 0; k < ROW; k++) {//row: k
+            document.write("<tr>")
+            for (let j = STA; j < (STA + COL); j++) {//col: j-STA
+                let nj = j + k * COL;
+                let isPink;
+                if (k % 2 == 0 && (j - STA) % 2 != 0) isPink = true;
+                else if (k % 2 != 0 && (j - STA) % 2 == 0) isPink = true;
+                else isPink = false;
+                document.write("<td bgcolor=" + (isPink ? "pink" : "lightgray") + ">");
+                for (let i = 1; i <= 9; i++) {
+                    let r = nj * i;
+                    document.write(`${nj} x ${i} = ${r}<br>`);
+                }
+                document.write("</td>")
+            }
+            document.write("</tr>")
+        }
+    </script>
+</table>
+
+<input type="button" value="產生表格" onclick="tableCreate()">
+<hr>
+<script>
+    function tableCreate() {
+        // var body = document.body,
+        var tbl = document.createElement('table');
+        tbl.style = "width:100%";
+        for (var i = 1; i < 10; i++) {
+            var tr = tbl.insertRow();//產生row
+            for (var j = 1; j < 10; j++) {
+                var td = tr.insertCell();//row後加cell
+                var mul = i * j;
+                td.appendChild(document.createTextNode(`${i}*${j}=${mul}`));
+                //cell內填值
+                if (j % 2 == 0 && i % 2 != 0) td.style.backgroundColor = 'pink';
+                else if (j % 2 != 0 && i % 2 == 0) td.style.backgroundColor = 'pink';
+                else td.style.backgroundColor = 'lightgray';
+            }
+        }
+        document.body.appendChild(tbl);
+    }
+</script>
+<script>
+    let sample = [];
+    switch (typeof sample) {
+        case "number":
+            document.write("數值(Number)");
+            break;
+        case "string":
+            document.write("字串(String)");
+            break;
+        case "object":
+            document.write("物件(Object)");
+            break;
+        case "boolean":
+            document.write("布林(Boolean)");
+            break;
+        case "function":
+            document.write("函式(Function)");
+            break;
+        default:
+            document.write("未定義(Undefined)");
+            break;
+        //"deault": can be placed anywhere.
+        //if no "break": do the next case.
+    }
+    document.write(' ' + "Over" + '<hr>');
+</script>
+<script>
+    let month = Math.floor(Math.random() * 12) + 1;
+    let day;
+    switch (month) {
+        case 2: day = 28; break;
+        case 4: case 6: case 9: case 11: day = 30; break;
+        default: day = 31; break;//1 3 5 7 8 10 12月
+    }
+    document.write(`${month}月有${day}天` + "<hr>");
+</script>
+<script>
+    let i = 100;// i=100 after loop.
+    for (i = 1; i <= 10; i++) console.log(i);
+    //Remove "let" in loop: i=11 after loop.
+    console.log(i);
+    //Undefined: i undefined if i defined only in loop.
+    let j = 1;
+    for (; j <= 10;) console.log(j++);
+    console.log(j);//Same result as above.
+</script>
+<script>
+    function init() {
+        console.log("Lee");
+    }
+    function DrawLine() {
+        console.log("======");
+    }
+    let k = 0;
+    for (init(); k < 10; DrawLine()) console.log(k++);
+</script>
+<script>
+    for (let i = 0; i < 10; i++) {
+        if (i % 2 == 0) {
+            continue;//Skip for once.
+        }
+        console.log(i)
+    }
+</script>
+<script>
+    let bajajo = 0;
+    bubuloop:
+    //Label this loop:
+    for (let i = 0; i < 10; i++) {
+        for (let j = 10; j > 0; j--) {
+            console.log(`i=${i} j=${j}`)
+            if (i + j == 17) bajajo++;
+            if (i == 9 && j == 7) break bubuloop;
+            //Escape this loop.
+        }
+        console.log("======")
+    }
+    console.log(`17出現${bajajo}次`);
+</script>
+<script>//Dice 100 times(no array)
+    let count_1 = count_2 = count_3 = count_4 = count_5 = count_6 = 0;
+    for (i = 0; i < 100; i++) {
+        let dice = parseInt(Math.random() * 6) + 1;
+        switch (dice) {
+            case 1: count_1++; break;
+            case 2: count_2++; break;
+            case 3: count_3++; break;
+            case 4: count_4++; break;
+            case 5: count_5++; break;
+            case 6: count_6++; break;
+            default: break;
+
+        }
+    }
+    document.write(`1出現${count_1}次<br>`);
+    document.write(`2出現${count_2}次<br>`);
+    document.write(`3出現${count_3}次<br>`);
+    document.write(`4出現${count_4}次<br>`);
+    document.write(`5出現${count_5}次<br>`);
+    document.write(`6出現${count_6}次<br>`);
+
+</script>
+<hr>
+<script>//Cheat dice 100 times(array)
+    let dice_arr = [0, 0, 0, 0, 0, 0];
+    for (i = 0; i < 81000; i++) {
+        let dice_roll = Math.floor(Math.random() * 9);
+        dice_arr[dice_roll>=6?dice_roll-3:dice_roll]++;
+    }
+    console.log(dice_arr);
+    for (j = 0; j < dice_arr.length; j++) {
+        document.write(`${j + 1}點出現${dice_arr[j]}次<br>`);
+    }
+</script>
+<script>
+    let a = 8, b = -7;
+    let c = b;
+    b = a;
+    a = c;
+    console.log(`${a} : ${b}`);
+    a = a + b;  // a = 13
+    b = a - b;  // b = 3
+    a = a - b;  // a = 10
+    console.log(`${a} : ${b}`);
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    console.log(`${a} : ${b}`);
+    let d = 123;
+    [a, b, d] = [d, a, b];
+    console.log(`${a} : ${b} : ${d}`);
+// Operator	Description	            Example	Same as	    Result	Decimal
+// &	    AND	                    5 & 1	0101 & 0001	0001	 1
+// |	    OR	                    5 | 1	0101 | 0001	0101	 5
+// ~	    NOT	                     ~ 5	~0101	    1010	 10
+// ^	    XOR	                    5 ^ 1	0101 ^ 0001	0100	 4
+// <<	    Zero fill left shift	5 << 1	0101 << 1	1010	 10
+// >>	    Signed right shift	    5 >> 1	0101 >> 1	0010	 2
+// >>>	    Zero fill right shift	5 >>> 1	0101 >>> 1	0010	 2
+
+</script>

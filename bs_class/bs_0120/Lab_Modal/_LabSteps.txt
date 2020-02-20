@@ -1,0 +1,191 @@
+Lab -- Bootstrap 對話盒
+
+
+1.	用編輯器開啟 Lab_0.html，檢視網頁內容
+
+
+2.	使用 Bootstrap 的 Modal 對話盒
+
+
+2.1	找到 <!-- Modal 放這邊 -->，貼入下列內容:
+    <div class="modal" id="loginModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+          <div class="modal-header">
+            <h4 class="modal-title">登入</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <div class="modal-body">
+            <!-- Modal body -->
+          </div>
+          
+          <div class="modal-footer">
+              <!-- Modal footer -->
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <Note>
+    請觀察一下上述 HTML 的結構
+
+
+2.2 找到 id="openLoginButton" 的那個按鈕，
+    將 data-target 的屬性值修改成:
+    data-target="#loginModal"
+
+
+2.3	在瀏覽器檢視作品並且點按「登入」按鈕。
+
+
+2.4 找到 <!-- Modal body -->，貼入下列內容:
+
+    <div class="form-group">
+        <label for="userNameTextBox">
+            <i class="fa fa-user"></i> 帳號:
+        </label>
+        <input type="text" 
+            class="form-control form-control-md"
+            id="userNameTextBox" 
+            placeholder="輸入帳號或E-mail" />
+    </div>
+
+    <div class="form-group">
+        <label for="userNameTextBox">
+            <i class="fa fa-lock"></i> 密碼:
+        </label>
+        <input type="password" 
+            class="form-control"
+            id="passwordTextBox" 
+            placeholder="請在此輸入密碼" />
+    </div>
+
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox"> 記住我(下次自動登入)
+        </label>
+    </div>
+
+    <div class="float-right">
+        <button type="button" 
+                id="loginButton" 
+                class="btn btn-outline-success">
+                <i class="fa fa-check"></i> 登入
+        </button>
+        <button type="button" 
+                id="cancelButton" 
+                class="btn btn-outline-secondary">
+                <i class="fa fa-remove"></i> 取消
+        </button> 
+    </div>          
+
+
+2.5 找到 <!-- Modal footer -->，貼入下列內容:
+
+    <p>
+        還不是會員嗎? <a href="#">加入我們</a> | 
+        <a href="#">忘記密碼?</a>
+    </p>  
+
+
+2.6	在瀏覽器檢視作品並且點按「登入」按鈕。
+
+
+(Optional)
+2.7 在 head 區塊加入下列樣式設定:
+    <style>
+      .modal {
+        font-family: 'Microsoft JhengHei', "Microsoft YaHei", STHeiti, sans-serif;
+      }
+
+      .modal-header, h4, .close {
+          background-color: #5cb85c;
+          color: white;
+          text-align: center;
+          font-size: 2em;
+      }
+
+      .modal-footer {
+          background-color: #f9f9f9;
+      }
+    </style>
+
+
+2.8	在瀏覽器檢視作品並且點按「登入」按鈕。
+
+
+
+
+3.  Modal 相關選項
+
+
+3.1 找到 id="openLoginButton" 的那個按鈕，
+    加入下列屬性:
+    data-backdrop="static"
+
+
+3.2	在瀏覽器檢視作品並且點按「登入」按鈕。
+
+    <Note>
+    加不加 data-backdrop="static"，有何差別?
+
+
+3.3 找到 id="cancelButton" 的那個按鈕，
+    加入下列屬性:
+    data-dismiss="modal"
+
+
+3.4	在瀏覽器檢視作品。
+
+    <Note>
+    點按「取消」按鈕，可關閉對話盒。
+
+
+3.5 找到 <div class="modal" id="loginModal"> 那行，改成:
+    <div class="modal fade" id="loginModal">
+
+
+3.6	在瀏覽器檢視作品並且點按「登入」按鈕。
+
+
+3.7 找到 <div class="modal-dialog"> 那行，改成:
+    <div class="modal-dialog modal-lg">
+    或者改成
+    <div class="modal-dialog modal-sm">
+
+
+3.8	在瀏覽器檢視作品，觀察對話盒的寬度變化。
+
+
+
+
+(Optional)
+4.  以 JavaScript 開啟/關閉對話盒
+
+4.1 找到 id="openLoginButton" 的那個按鈕，
+    將 data-* 的屬性值都刪掉。
+
+
+4.2	在瀏覽器檢視作品並且點按「登入」按鈕。
+
+
+4.3 在 </body> 前一行，貼入下列程式:
+
+<script>
+
+  $("#openLoginButton").click(function () {
+    $("#loginModal").modal({backdrop: "static"});
+  })
+
+</script>
+
+4.4 繼續在 script ，加入下列程式:
+
+  $("#loginButton").click(function () {
+    $("#loginModal").modal("hide");
+  })
+

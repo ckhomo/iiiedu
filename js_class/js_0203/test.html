@@ -1,0 +1,234 @@
+<h1>My Test Page</h1>
+<script>
+    function doCalc() {
+        let op = document.getElementById("op");
+        let num_x = parseFloat(document.getElementById("num_x").value);
+        let num_y = parseFloat(document.getElementById("num_y").value);
+        // console.log(op.selectedIndex);
+        op = parseInt(op.selectedIndex);
+        // + - * / = 0 1 2 3
+        if (op == 0) {
+            document.getElementById("num_xy").innerHTML = num_x + num_y;
+        }
+        if (op == 1) {
+            document.getElementById("num_xy").innerHTML = num_x - num_y;
+        }
+        if (op == 2) {
+            document.getElementById("num_xy").innerHTML = num_x * num_y;
+        }
+        if (op == 3) {
+            let yuu = num_x % num_y;
+            let shang = (num_x - yuu) / num_y;
+            document.getElementById("num_xy").innerHTML = shang + "......" + yuu;
+        }
+    }
+</script>
+<script>
+    function add() {
+        let num1 = document.getElementById("num1").value;//String.
+        let num2 = document.getElementById("num2").value;//String.
+        var sum = parseFloat(num1) + parseFloat(num2);//Change to number.
+        alert(sum);
+        // document.getElementById("num3").value = sum;//Sol:1
+        document.getElementById("num3").innerHTML = sum;//Sol:2
+    }
+</script>
+<script>
+    function divide() {
+        let num_a = document.getElementById("num_a").value;//String.
+        let num_b = document.getElementById("num_b").value;//String.
+        let int_a = parseInt(num_a);
+        let int_b = parseInt(num_b);
+        let int_d = int_a % int_b;
+        let int_c = (int_a - int_d) / int_b;
+        alert(int_c + "......" + int_d);
+        document.getElementById("num_c").value = int_c + "......";
+        document.getElementById("num_d").value = int_d;
+
+    }
+</script>
+<script>
+    function ruun() {
+        let year = document.getElementById("year").value;
+        year = Number(year);
+        let isOK;
+        if (year % 4 != 0) {
+            isOK = false;
+        } else if (year % 100 != 0) {
+            isOK = true;
+        } else if (year % 400 != 0) {
+            isOK = false;
+        } else { isOK = true; }
+        //Method 2 (low-efficiency)
+        // if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+        //     isOK = true;
+        // } else isOK = false;
+
+        document.getElementById("year_ans").innerHTML =
+            isOK ? '閏年😒' : '平年😊';
+        //三元運算: isOK? true-->LEFT(閏年); false-->RIGHT(平年);
+    }
+</script>
+<br>
+<!--加法-->
+<input type="text" id="num1">
++
+<input type="text" id="num2">
+<input type="button" value="=" onclick="add()">
+<!--(Sol:1)-->
+<!-- <output type="text" id="num3"></output> -->
+<!--(Sol:2)-->
+<span id="num3"></span>
+<hr>
+<!--除法-->
+<input type="text" id="num_a">
+/
+<input type="text" id="num_b">
+<input type="button" value="=" onclick="divide()">
+<output type="text" id="num_c"></output>
+<output type="text" id="num_d"></output>
+<hr>
+<!--加減乘除-->
+<input type="text" id="num_x">
+<select id="op">
+    <option>+</option>
+    <!--index:0-->
+    <option>-</option>
+    <!--index:1-->
+    <option>*</option>
+    <!--index:2-->
+    <option>/</option>
+    <!--index:3-->
+</select>
+<input type="text" id="num_y">
+<input type="button" value="=" onclick="doCalc()">
+<span id="num_xy"></span>
+<hr>
+<!--閏年-->
+<input type="text" id="year">
+<input type="button" value="閏年OR NOT" onclick="ruun()">
+<span id="year_ans"></span>
+<hr>
+<script>
+    document.write("SHUT THE FUCK UP!");
+</script>
+<hr>
+<script src="test.js">
+    document.write("СУКА БЛЯТЬ!")
+    //Will not show up(script src="" exists).
+</script>
+<hr>
+<script>//Results below can be observed in "開發人員工具(Chrome)"
+    a = 10; b = 3;
+    console.log(a);
+    console.log(b);
+    var c;//Adding this makes "console.log(c)" from ERROR to UNDEFINED.
+    console.log(c);
+    let d;//Same as above.
+    console.log(d);
+    var c = 100;
+    // "var" does not have the limit like "let" below(rewritable).
+    console.log(c);
+    // let d = 200;
+    //This creates an ERROR since you can't declare the same variable TWICE.
+    // let: "RECOMMENDED" variable declaration method.
+    console.log(d);
+</script>
+<script>
+    let var1; // [a-z A-Z $_] [a-z A-Z 0-9 $_], 中文亦可
+    let 智商 = 87;
+    console.log(智商);
+    console.log(typeof var1);
+    var1 = 123;//number
+    console.log(typeof var1);
+    var1 = 12.3;//number
+    console.log(typeof var1);
+    var1 = true;//boolean
+    console.log(typeof var1);
+    var1 = "ЭДЕЛЬВЕЙС";//string
+    console.log(typeof var1);
+</script>
+<script>
+    let a = 10; b = 3;
+    let k = a / b;
+    console.log(k);//Float.
+    console.log(parseInt(k));//Integer.
+    let l = a % b;//餘數
+    console.log(l);
+</script>
+<script>
+    let aa = 94; bb = 86;
+    // let c = a + b;
+    document.write(`${a}+${b}=${a + b}<hr>`);
+
+    let name = 'Lee';
+    let msg = `Hello, ${name}!`;
+    document.write(msg + "<br>");
+
+    let cc = 10;
+    let dd = true;//Initial number: 1
+    let ee = cc + dd;
+    document.write(ee + "<hr>");
+
+    let var_1 = 0; var_2 = 'III';
+    document.write(var_1 / var_2 + "<hr>");
+
+    let b1 = true; b2 = false;
+    let b3 = b1 / b2;
+    document.write(b3 + "<hr>");
+    let c1 = 3; c2 = 2;
+    document.write(c1 | c2);//Binary calculation.(not useful)
+
+</script>
+<hr>
+<script>
+    let score = parseInt(101 * Math.random());//Inclusive of 0, but not 1
+    // Change 100 to 101: morgh the range!
+    if (score >= 90) {
+        document.write(score + "A" + '<hr>');
+    } else if (score >= 75) {
+        document.write(score + "B" + '<hr>');
+    } else if (score >= 60) {
+        document.write(score + "C" + '<hr>');
+    } else {
+        document.write(score + "Failed" + '<hr>');
+    }
+    var arr = [];
+    while (arr.length < 8) {//How many numbers you want
+        var r = Math.floor(Math.random() * 49) + 1;
+        //Math.floor & parseInt:
+        //parseInt(str, rad)可解析字串成值(rad為進制), "無條件捨去小數點"
+        //Math.floor(num)可放入值或表達式, "直接向下取整數"
+        //Math.ceil(num)為floor之相反, "向上取整數"
+        //Math.floor(-1.5): -2; Math.ceil(-1.5): -1; parseInt(-1.5): -1;
+        if (arr.indexOf(r) === -1) {
+            // indexOf(r): the index of r(r之索引值)
+            //===: 嚴格全等 Same class, same content.
+            arr.push(r);
+            //The push() method adds new items to the end of an array.
+        }
+    }
+    document.write(arr);
+</script>
+<script>
+    let m = 10, n = 3;
+    // console.log(++m);//Add then print.
+    console.log(m++);//Print then add.
+    console.log(m);
+    console.log(--n);//Minus then print.
+    console.log(n);
+    //沒有乘乘, 除除
+    if (m++ < 10 || n-- > 0) {
+        //"&&(and)" n-- not compiled: XX m=12; n=2
+        //"||(or)" n-- compiled: OK m=12; n=1
+        console.log(`OK m=${m}; n=${n}`);
+    } else console.log(`XX m=${m}; n=${n}`);
+</script>
+<script>
+    // let x1 = "A", x2 = "a";
+    //if x1, x2 strings: compare with ASCII code.
+    let x1 = 10; x2 = "10";
+    if (x1 == x2) {// ===: XX; ==: OO
+        console.log('OK');
+    } else { console.log('XX'); }
+</script>

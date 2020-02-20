@@ -1,0 +1,137 @@
+Lab: Bootstrap Flex Layout
+
+
+1.  d-flex
+
+
+1.1 以 HTML Editor 開啟 lab_0.HTML
+
+
+1.2  在 <body>，置入下列 HTML 內容，完成後，在瀏覽器檢視作品。
+
+  <div class="container">
+    <h1>Flex</h1>
+    <div class="p-3 bg-secondary text-white">  
+      <div class="p-2 bg-info">Item 1</div>
+      <div class="p-2 bg-warning">Item 2</div>
+      <div class="p-2 bg-primary">Item 3</div>
+    </div>
+  </div>
+
+
+1.3 針對 <div class="p-3 bg-secondary text-white">
+    改成這樣:
+    <div class="p-3 d-flex bg-secondary text-white"> 
+
+
+    <Note> p-3, p-2 是什麼?
+    https://stackoverflow.com/questions/42160532/what-does-the-p-n-and-its-variants-represent-in-bootstrap-v4
+
+    <Note> 有關於 bg-secondary 與其他色彩設定，請參考:
+    https://www.w3schools.com/bootstrap4/bootstrap_colors.asp
+
+
+1.4 與 1.3 同一行，改用以下的設定，有何不同?
+
+    <div class="p-3 d-inline-flex bg-secondary text-white">  
+
+
+1.5 一樣是同一行，分別採用以下這兩種設定，各有何不同?
+
+<div class="p-3 d-flex flex-row bg-secondary text-white">
+<div class="p-3 d-flex flex-row-reverse bg-secondary text-white">
+
+
+1.6 同上，若是分別採用以下這兩種設定，各有何不同?
+
+    <div class="p-3 d-flex flex-column bg-secondary text-white">
+    <div class="p-3 d-flex flex-column-reverse bg-secondary text-white">
+
+
+
+
+2. 項目對齊/填滿/折行等選項
+
+
+2.1 針對上述 1.3~1.6 那行，分別採用下列設定:
+    - d-flex justify-content-start
+    - d-flex justify-content-end
+    - d-flex justify-content-center
+    - d-flex justify-content-between
+    - d-flex justify-content-around
+
+    例如:
+    <div class="p-3 d-flex justify-content-end bg-secondary text-white">  
+
+
+2.2 針對 Item1、Item2、Item3 這三個選項，
+    都套用 flex-fill 類別，像這樣:
+
+    <div class="p-3 d-flex justify-content-center bg-secondary text-white">  
+      <div class="flex-fill p-2 bg-info">Item 1</div>
+      <div class="flex-fill p-2 bg-warning">Item 2</div>
+      <div class="flex-fill p-2 bg-primary">Item 3</div>
+    </div>
+
+
+2.3 針對 Item1、Item2、Item3 這三個選項，
+    如果改成這樣，就畫面效果來說，你覺得 flex-grow-1 的作用是?
+
+    <div class="p-3 d-flex justify-content-center bg-secondary text-white">  
+      <div class="p-2 bg-info">Item 1</div>
+      <div class="p-2 bg-warning">Item 2</div>
+      <div class="flex-grow-1 p-2 bg-primary">Item 3</div>
+    </div>
+
+
+2.4 針對 Item1、Item2、Item3 這三個選項，
+    改成這樣 (Item1 使用 mr-auto ):
+
+    <div class="p-3 d-flex justify-content-center bg-secondary text-white">  
+      <div class="p-2 mr-auto bg-info">Item 1</div>
+      <div class="p-2 bg-warning">Item 2</div>
+      <div class="p-2 bg-primary">Item 3</div>
+    </div>
+
+    存檔後，在瀏覽器檢視作品，觀察三個項目的排列方式。
+
+
+2.5 針對 Item1、Item2、Item3 這三個選項，
+    改成這樣 (Item1 使用 mr-auto ):
+
+    <div class="p-3 d-flex justify-content-center bg-secondary text-white">  
+      <div class="p-2 mr-auto bg-info">Item 1</div>
+      <div class="p-2 bg-warning">Item 2</div>
+      <div class="p-2 bg-primary">Item 3</div>
+    </div>
+
+    存檔後，在瀏覽器檢視作品，觀察三個項目的排列方式。
+
+
+2.6 <body>的內容改成這樣:
+  <Hint> 容器的寬度改小，Item的數量變多
+
+  <div class="container">
+    <h1>Flex</h1>
+    <div class="p-3 w-50 d-flex justify-content-center bg-secondary text-white">  
+      <div class="p-2 bg-info">Item 1</div>
+      <div class="p-2 bg-warning">Item 2</div>
+      <div class="p-2 bg-primary">Item 3</div>
+      <div class="p-2 bg-info">Item 4</div>
+      <div class="p-2 bg-warning">Item 5</div>
+      <div class="p-2 bg-primary">Item 6</div>
+      <div class="p-2 bg-info">Item 7</div>
+      <div class="p-2 bg-warning">Item 8</div>
+      <div class="p-2 bg-primary">Item 9</div>
+    </div>
+  </div>
+
+
+2.7 <div class="p-3 w-50 d-flex ... 那行，
+    加入下列類別後，畫面會有什麼變化?
+    flex-wrap
+
+
+2.8 瀏覽下列網址:
+    https://www.w3schools.com/bootstrap4/bootstrap_flex.asp
+    操作「Align Content」那區的各項選項。

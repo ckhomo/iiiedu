@@ -1,0 +1,41 @@
+<div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="jsonutil.js"></script>
+<script>
+    //auto generate options from address.
+    //auto generate results in a table.
+
+    //Get data.
+    // let gov = $.getJSON('./maskdata.json');
+    let gov = $.getJSON('./maskdata.json', function (gov) {
+        // console.log(gov.length);
+        // console.log(JSON.stringify(gov));
+        // console.log(gov);
+        var adrs = getValues(gov, '醫事機構電話');
+        // console.log(adrs);
+        //Obtain Phone code!
+        let opt_arr = [];
+        for (i = 0; i < adrs.length; i++) {
+            var tel = adrs[i].split(')', 1);
+            tel = String(tel);
+            if (opt_arr.indexOf(tel) === -1) {
+                opt_arr.push(tel);
+            }
+        }
+        for (j = 0; j < opt_arr.length; j++)
+            opt_arr[j] = opt_arr[j].slice(1);
+        // console.log(checkarr);
+        console.log(opt_arr);
+
+        //Create drop-down list by phone code.
+        selectGenerate(opt_arr);
+
+    });
+    console.log(gov);
+    //Already an object.
+    // gov = JSON.parse(gov);
+
+    // console.log(getValues(gov, 'ID'));
+
+</script>

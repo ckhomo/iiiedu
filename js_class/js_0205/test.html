@@ -1,0 +1,168 @@
+<style>
+    table {
+        width: 100%;
+        border: 5px solid black;
+    }
+
+    table td,
+    table tr {
+        border: 1px solid black;
+    }
+
+    #darky {
+        background-color: gray;
+        color: black;
+    }
+
+    #pinky {
+        background-color: pink;
+        color: red;
+    }
+</style>
+<script>//Formula solver.
+    function Degree2(a1, a2, a3) {//a1x^2+a2^x+a3=0
+        var a1 = Number(a1);
+        var a2 = Number(a2);
+        var a3 = Number(a3);
+        let ans_1 = parseFloat((-a2 + Math.sqrt((a2 ** 2 - 4 * a1 * a3))) / (2 * a1)).toFixed(4);
+        let ans_2 = parseFloat((-a2 - Math.sqrt((a2 ** 2 - 4 * a1 * a3))) / (2 * a1)).toFixed(4);
+        if (isNaN(ans_1)) {//Imaginary must be conjugated.
+            document.getElementById('ans_x1').innerHTML = 'Imaginary solution';
+            document.getElementById('ans_x2').innerHTML = '';
+        }
+        else {
+            document.getElementById('ans_x1').innerHTML = 'x1=' + ans_1;
+            document.getElementById('ans_x2').innerHTML = 'x2=' + ans_2;
+        }
+    }
+</script>
+<script>//Poker shuffle
+    let poker = [];
+    let player = [[], [], [], []];
+    function runRand() {
+        for (i = 0; i < 52; i++)poker[i] = i;
+        for (j = poker.length - 1; j > 0; j--) {
+            let rand = Math.floor(Math.random() * (j + 1));
+            [poker[j], poker[rand]] = [poker[rand], poker[j]];
+            //swap contents.
+        }
+        //Check result.
+        // for (let value of poker) document.write(value + ",");
+        // document.write(poker.toString());
+        for (k = 0; k < poker.length; k++) {
+            player[k % 4].push(poker[k]);//mod(%): 輪流發牌
+            // player[k % 4][parseInt(k / 4)] = poker[k];//This also works.
+        }
+        //Check result.
+        // for (i = 0; i < 4; i++)document.write(player[i].toString() + "<br>");
+        // for (let card of player[0]) document.write(card + ",");
+        console.log(player.length);//4
+    }
+
+</script>
+<script>
+    function pokerCheck(card) {//Give result of Pokers.
+        if (card % 13 == 0) return "A";
+        else if (card % 13 == 10) return "J";
+        else if (card % 13 == 11) return "Q";
+        else if (card % 13 == 12) return "K";
+        else return card % 13;
+    }
+</script>
+<script>
+    function deletion(str) {//Delete elements by their ID.
+        var del = document.getElementById(`${str}`);
+        del.remove();
+    }
+</script>
+<script>
+    function Distribute() {//Table created in function.
+        runRand();
+        deletion("gamble");
+        var tbl = document.createElement('table');
+        tbl.setAttribute("id", "gamble");
+        tbl.style = "width:100%";
+        for (play of player) {
+            var tr = tbl.insertRow();//產生row
+            for (card of play) {
+                var td = tr.insertCell();//row後加cell
+                if (card < 13) {
+                    td.appendChild(document.createTextNode(`♠${pokerCheck(card)}`));
+                    td.setAttribute("id", "darky");
+                }
+                else if (card >= 13 && card < 26) {
+                    td.appendChild(document.createTextNode(`♣${pokerCheck(card)}`));
+                    td.setAttribute("id", "darky");
+                }
+                else if (card >= 26 && card < 39) {
+                    td.appendChild(document.createTextNode(`♥${pokerCheck(card)}`));
+                    td.setAttribute("id", "pinky");
+                }
+                else {
+                    td.appendChild(document.createTextNode(`♦${pokerCheck(card)}`));
+                    td.setAttribute("id", "pinky");
+                }
+            }
+        }
+        document.body.appendChild(tbl);
+        //Append "tbl" at <body>
+        poker = [];
+        player = [[], [], [], []];
+        //Global variables: need reset after used.
+    }
+</script>
+<script>
+    function Adding(btm = 1, top) {//btm default = 1
+        btm = Number(btm);
+        top = Number(top);
+        let i = btm, sum = 0;
+        while (i <= top) {
+            sum += i++;   // sum = sum + i++;
+        }
+        // console.log(btm, top);
+        document.getElementById('add_ans').innerHTML = sum;
+    }
+</script>
+<!--Call Distribute().-->
+<input type="button" value="發牌" onclick="Distribute()">
+<!--Do add using while.-->
+<input type="text" id="btm">
++....+
+<input type="text" id="top">
+<input type="button" value="="
+    onclick="Adding(document.getElementById('btm').value,document.getElementById('top').value)">
+<span id="add_ans"></span>
+<hr>
+<!--解二元一次方程:-->
+<input type="text" value="1" id="x2">
+<input type="text" value="-2" id="x1">
+<input type="text" value="1" id="x0">
+<input type="button" value="solve X"
+    onclick="Degree2(document.getElementById('x2').value,document.getElementById('x1').value,document.getElementById('x0').value,)">
+<span id="ans_x1"></span>
+<span id="ans_x2"></span>
+<hr>
+<table id="gamble">
+    <!--Table made on class.-->
+    <script>
+        let suits = ['&spades;', '&hearts;', '&diams;', '&clubs;'];
+        //Nice try. But useless facing Win + ">"
+        runRand();
+        for (play of player) {
+            document.write("<tr>");
+            for (card of play) {
+                if (card < 13)
+                    document.write(`<td id="darky">${suits[0]}${pokerCheck(card)}</td>`);
+                else if (card >= 13 && card < 26)
+                    document.write(`<td id="darky">${suits[3]}${pokerCheck(card)}</td>`);
+                else if (card >= 26 && card < 39)
+                    document.write(`<td id="pinky">${suits[1]}${pokerCheck(card)}</td>`);
+                else
+                    document.write(`<td id="pinky">${suits[2]}${pokerCheck(card)}</td>`);
+            }
+        }
+        document.write("</tr>");
+        poker = [];
+        player = [[], [], [], []];
+    </script>
+</table>

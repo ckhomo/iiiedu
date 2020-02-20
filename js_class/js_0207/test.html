@@ -1,0 +1,51 @@
+<script>
+    let bike = new Object();
+    document.write(typeof bike + '<br>');
+    bike.speed = 0;
+    document.write(typeof bike.speed + '<br>');
+    bike.upSpeed = function () {
+        this.speed = this.speed < 1 ? 1 : this.speed * 1.2;
+    };
+    bike.upSpeed();//1
+    bike.upSpeed();//1.2
+    bike.upSpeed();//1.44
+    document.write(bike.speed + '<hr>');
+
+    //scooter has-a
+    let scooter = {
+        //Declare an object.
+        speed: 0,
+        gear: 1,
+        //Keys: seperate by comma.
+        upSpeed: function () {
+            this.speed = this.speed < 1 ? 1 : this.speed * this.gear * 1.2;
+        },
+        downSpeed: function () {
+            this.speed = this.speed < 1 ? 0 : this.speed * this.gear * 0.7;
+        },
+    }
+    scooter.upSpeed(); scooter.upSpeed(); scooter.upSpeed(); scooter.downSpeed();
+    document.write(scooter.speed + '<hr>');
+    //Method #1
+    //bike.upSpeed();
+    document.write(bike.speed + '<br>');
+    //Method #2
+    bike['upSpeed']();
+    document.write(bike.speed + '<br>');
+    //Method #3
+    let method = 'upSpeed';
+    bike[method]();
+    document.write(bike.speed + '<br>');
+
+    for(let name in bike){
+        document.write(name+":"+bike[name]+'<br>');
+    }
+    document.write('<hr>');
+    for(let name in window){
+        document.write(name+":"+window[name]+'<br>');
+    }
+    document.write('<hr>');
+    for(let name in document){
+        document.write(name+":"+document[name]+'<br>');
+    }
+</script>

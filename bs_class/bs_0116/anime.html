@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>    
+    <script src="js/bootstrap.min.js" ></script>
+    <style>
+        /*
+--d for the offset-path used for the circle
+--animation describing the properties shared by the circle and path
+*/
+:root {
+  --d: "M 0 0 h 300";
+  --animation: 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite forwards;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' opacity='0.25' viewBox='0 0 50 50'%3E%3Cpath d='M 0 0 h 50 v 50' fill='none' stroke='hsl(140, 75%25, 50%25)' stroke-width='1' stroke-linecap='square' stroke-linejoin='square' /%3E%3C/svg%3E"), hsl(140, 80%, 4%);
+  background-size: 25px;
+  color: hsl(150, 75%, 90%);
+}
+svg {
+  margin: auto;
+  width: 300px;
+  height: auto;
+  display: block;
+}
+
+/* animate the circle to follow the path described by the custom property */
+svg circle {
+  offset-path: path(var(--d));
+  offset-distance: 0%;
+  animation: var(--animation);
+  animation-name: increaseOffset;
+}
+
+svg path {
+  stroke-dashoffset: 1;
+  stroke-dasharray: 1;
+  animation: var(--animation);
+  animation-name: removeOffset;
+}
+
+@keyframes increaseOffset {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes removeOffset {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+    </style>
+
+
+</head>
+<body>
+   <!--
+  horizontally push the elements to the left of the viewBox
+  vertically center same shapes
+  -->
+<svg viewBox="50 -100 200 200">
+  <g>
+    <!-- pathLength to animate the stroke using percent values -->
+    <path pathLength="1" d="M 0 0 h 300" fill="none" stroke="currentColor" stroke-width="1" />
+    <circle fill="currentColor" r="3" />
+  </g>
+</svg>
+<script>
+    // identify the path and at every iteration update its `d` attribute alongside the `--d` custom property
+const path = document.querySelector('path');
+
+// utility functions to set up a spike with a semi random height/length
+const randomBetween = (min, max) => Math.round(Math.random() * (max - min) + min);
+const randomSpike = (spike = 1) => {
+  const x = randomBetween(2, 5) * spike;
+  const y = randomBetween(10, 30) * spike;
+
+  return `${x} -${y} ${x*2} ${y*2} ${x} -${y}`;
+};
+
+path.addEventListener('animationiteration', () => {
+  const spikes = randomBetween(2, 5);
+  const d = `M 0 0 h 75 ${Array(spikes).fill().map(() => `l ${randomSpike()} h 25`).join('')} H 300`;
+
+  path.setAttribute('d', d);
+  // ! the custom property expects the value surrounded by quotes
+  document.body.style.setProperty('--d', `"${d}"`);
+})
+</script>
+
+
+
+</body>
+</html>

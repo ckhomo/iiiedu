@@ -1,0 +1,77 @@
+<style>
+    table {
+        width: 100%;
+        border: 5px solid black;
+    }
+
+    #sign {
+        position: absolute;
+        top: 0px;
+        right: 5px;
+    }
+
+    table td,
+    table tr {
+        border: 1px solid black;
+    }
+</style>
+<input type="text" placeholder="輸入最小值" id="min">
+<input type="text" placeholder="輸入最大值" id="max">
+<input type="text" placeholder="輸入欄數" id="col">
+<input type="button" value="產生表格" onclick="tableCreate()">
+<p id="sign">Written in 2020.02.04</p>
+<table id="prime" style="display: none;"></table>
+<!-- Dummy for deletion() at first time. -->
+<hr>
+<script>
+    function deletion(str) {//Delete element by ID.
+        var del = document.getElementById(`${str}`);
+        del.remove();
+    }
+</script>
+<script>
+    function tableCreate() {
+        deletion("prime");
+        //Remove old table.
+        var min = parseInt(document.getElementById("min").value);
+        min = Number(min);
+        var max = parseInt(document.getElementById("max").value);
+        max = Number(max);
+        var col = parseInt(document.getElementById("col").value);
+        col = Number(col);
+        //Get maximum, minimum and column.
+        var tbl = document.createElement('table');
+        tbl.setAttribute("id", "prime");
+        tbl.style = "width:100%";
+        //Generate table.
+        for (var i = 0; i < parseInt((max - min) / col) + 1; i++) {
+            var tr = tbl.insertRow();//產生row
+            for (var j = 0; j < col; j++) {
+                var num = i * col + j + min;//設定開始記數之值
+                if (num > max) break;//太大就跳出
+                var td = tr.insertCell();//row後加cell
+                td.appendChild(document.createTextNode(`${num}`));//cell內填值
+                //質數過篩:優化
+                if (num == 1) td.style.backgroundColor = 'lightgray';
+                else if (num == 2 || num == 3 || num == 5) td.style.backgroundColor = 'lightyellow';
+                //Handle special numbers.(1,2,3,5)
+                else if (num % 2 == 0 || num % 3 == 0 || num % 5 == 0) td.style.backgroundColor = 'lightgray';
+                //Filter: 2,3,5倍數者不參與質數過篩
+                else if (Prime_check(num) == true) td.style.backgroundColor = 'lightyellow';
+                else td.style.backgroundColor = 'lightgray';
+            }
+        }
+        document.body.appendChild(tbl);//Print table.
+    }
+</script>
+<script>
+    function Prime_check(pm) {
+        var spm = parseInt(Math.sqrt(pm));
+        for (i = 7; i <= spm; i = i + 2) {//No more偶數, 故兩個一數
+            if (pm % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+</script>

@@ -1,0 +1,24 @@
+<script>
+    //
+    function test1() {
+        alert('OK1!');
+    }
+    function test2() {
+        alert('OK2!');
+    }
+    function test3() {
+        alert('OK3!');
+    }
+    function checkFrom() {
+        return false;
+    }
+</script>
+<input type='button' value="test" onclick='test1()'>
+<input type='button' value="test" onclick='test2()'>
+<input type='button' value="test" onclick='test3()'>
+<hr>
+<form action="test.php" onsubmit="return checkFrom()">
+    Account:<input type="text" name="acc" /><br>
+    Password:<input type="password" name="pwd" /><br>
+    <input type='submit' value="Login" />
+</form>

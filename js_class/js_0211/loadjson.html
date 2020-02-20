@@ -1,0 +1,17 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    let gov = $.getJSON('./govdata.json', function (gov) {
+        console.log(gov.length);
+        console.log(gov);
+        // console.log(JSON.stringify(gov));
+    });
+
+    //How to load csv:(online converter)
+    //https://www.csvjson.com/csv2json
+    let mask = $.getJSON('./maskdata.json', function (mask) {
+        console.log(mask.length);
+        console.log(mask);
+    })//responseText
+
+    //jQuery method to load csv:
+</script>

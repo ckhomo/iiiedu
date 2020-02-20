@@ -1,0 +1,104 @@
+<script src="test.js"></script>
+<script>
+    function checkID() {
+        // console.log(onblur);
+        let twid = document.getElementById('twid').value;
+        let result = checkTWId(twid);
+        if (result) document.getElementById('msg').innerHTML = 'OK';
+        else document.getElementById('msg').innerHTML = 'ERR';
+    }
+</script>
+<form action="test.php">
+    Name:<input type="text" /><br>
+    ID: <input type="text" id="twid" onblur="checkID()" />
+    <!--onblur: 失焦 Triggered when target moves to other box/button...etc.-->
+    <span id='msg'></span><br>
+    Gender:<input type="radio" name="location">Male<input type="radio" name="location">Female<br>
+    <!--name="location": 排他性-->
+    <input type="submit" value="Register" />
+</form>
+<hr>
+<!--2020.02.06-->
+ID Generator:<br>
+請選擇地區：<select id="area_op">
+    <!--Index:0-->
+    <option selected="selected">臺北市</option>
+    <option>臺中市</option>
+    <option>基隆市</option>
+    <option>臺南市</option>
+    <option>高雄市</option>
+    <option>新北市</option>
+    <option>宜蘭縣</option>
+    <option>桃園市</option>
+    <option>嘉義市</option>
+    <option>新竹縣</option>
+    <option>苗栗縣</option>
+    <option>南投縣</option>
+    <option>彰化縣</option>
+    <option>新竹市</option>
+    <option>雲林縣</option>
+    <option>嘉義縣</option>
+    <option>屏東縣</option>
+    <option>花蓮縣</option>
+    <option>臺東縣</option>
+    <option>金門縣</option>
+    <option>澎湖縣</option>
+    <option>連江縣</option>
+    <!--Index:21-->
+</select>
+請選擇性別：<select id="gen_op">
+    <option selected="selected">男</option>
+    <option>女</option>
+</select>
+<!--Pass indexs of dropdown-lists to generator function.-->
+<input type="button" value="產生"
+    onclick="createTWId(parseInt(document.getElementById('area_op').selectedIndex),parseInt(document.getElementById('gen_op').selectedIndex))">
+<span id="id_ans"></span>
+<hr>
+<script>
+    let l_count = 0;//Seconds.
+    let timerTask = null;
+    var isRun = document.getElementById('START');
+    let lmax, llength;
+    function timeLottery(max, length) {
+        //disable START button after started.
+        var isRun = document.getElementById('START');
+        isRun.setAttribute("disabled","");
+        //
+        lmax = Number(max);
+        llength = Number(length);
+        timerTask = setInterval(giveLottery, 0.5 * 1000);
+    }
+    function giveLottery() {//產生結果陣列輸出至div
+        var arr = [];
+        while (arr.length < llength) {
+            var r = Math.floor(Math.random() * lmax) + 1;
+            if (arr.indexOf(r) === -1) {
+                arr.push(r);
+            }
+        }
+        document.getElementById('l_result').innerHTML = `${arr}`;
+    }
+    function timePause() {//PAUSE: clearInterval 停止循環
+        //
+        var isRun = document.getElementById('START');
+        isRun.removeAttribute("disabled","");
+        //enable START button after paused/cleared.
+        if (timerTask != null) clearInterval(timerTask);
+    }
+    function timeClear() {//CLEAR: 清除計數器, lmax, llength, div內容
+        var isRun = document.getElementById('START');
+        isRun.removeAttribute("disabled","");
+        i = 0;
+        lmax = 0; llength = 0;
+        document.getElementById('l_result').innerHTML = '';
+    }
+</script>
+<input type="text" id="l_max" placeholder="輸入最大值" value="49">
+<input type="text" id="l_length" placeholder="輸入長度" value="6">
+<input type="button" value="START" id="START"
+    onclick="timeLottery(document.getElementById('l_max').value,document.getElementById('l_length').value)">
+<input type="button" value="PAUSE" onclick="timePause()">
+<input type="button" value="CLEAR" onclick="timeClear()">
+<div id='l_result'></div>
+<hr>
