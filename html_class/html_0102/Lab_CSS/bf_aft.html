@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Before & After</title>
+    <style>
+        p{/*Lowest priority.*/
+            color:cornflowerblue;
+        }
+
+        p.demo{/* "class" Medium priorty.*/
+            color:darkcyan;
+        }
+
+        #test{
+            color: gray;
+            width: 200px;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        #lab{/* "id" Highest priority.*/
+            color:blue;
+        }
+
+        #lab:after{
+            content:"??????";
+        }
+
+        #test:after{
+            content: "......";
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="test">
+        <p id="lab" class="demo">HELLO WORLD</p>
+    </div>
+
+</body>
+
+</html>

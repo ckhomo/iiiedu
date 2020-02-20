@@ -1,0 +1,32 @@
+CSS Web Fonts
+https://www.w3schools.com/css/css3_fonts.asp
+
+
+What is Google Fonts?
+https://www.w3schools.com/whatis/whatis_google_fonts.asp
+
+
+Font Awesome Text Icons
+https://www.w3schools.com/icons/fontawesome_icons_text.asp
+https://www.w3schools.com/charsets/ref_utf_misc_symbols.asp
+
+
+CSS The object-fit Property
+https://www.w3schools.com/css/css3_object-fit.asp
+https://www.w3schools.com/cssref/css3_pr_object-position.asp
+
+
+CSS Units
+https://www.w3schools.com/cssref/css_units.asp
+
+
+CSS Variables
+https://www.w3schools.com/css/css3_variables.asp
+
+
+CSS clip-path Property
+https://www.w3schools.com/cssref/playit.asp?filename=playcss_clip-path&preval=circle(40%)
+
+
+CSS filter Property
+https://www.w3schools.com/cssref/css3_pr_filter.asp

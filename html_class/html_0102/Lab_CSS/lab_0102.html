@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <title>My first styled page</title>
+  <style type="text/css">
+    body {/*color indication: "rgb" "hsl"*/
+      padding-left: 11em;
+      font-family: Georgia, "Times New Roman",Times, serif;
+      color: rgba(238, 130, 238, 1);
+      /* the last number "1"(range in 0~1) means opacity. */
+      background-color: #d8da3d
+         }
+
+    ul.navbar {
+      position: absolute;/*absolute & relative:*/
+      /**/
+      top: 2em;
+      left: 1em;
+      width: 9em;
+      /* list-style-type: lower-greek; */
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+              }
+    
+    h1   {
+      font-family: Arial, Helvetica, sans-serif;
+         }
+    /*font-family: monospace; --> makes sizes of each alphabets equal. */
+
+    ul.navbar li{/* means list "under/inside" ul.navbar */
+      background-color: white;
+      /* font-size: 1em; */
+      margin: 0.5em;
+      /*magin input numbers:*/
+      /* 1--> all direction
+      2--> right and up
+      4--> clockwise from right */
+      padding: 0.3em;
+      border-right: 1em solid black;
+    }
+
+    ul.navbar a{
+      text-decoration: none;
+    }
+    
+    a:link{
+      color:blue;
+    }
+    a:visited{
+      color:purple;
+    }
+
+    .font-size-2 {
+      font-size: 2em;
+      font-style: oblique;
+    }
+    /*Example:*/
+    div p{/* means: p which "inside" div(in any layer). */
+      font-size: 10em;
+    }
+    div>p{/* means: p "DIRECTLY" belongs to div. */
+      color: red;
+    }
+    /* In a multi-layer structure shows the difference of above 2. */
+
+    a:hover{/* makes color-change/string-tilt when your mouse hovers on.*/
+      position: relative;
+      color: chartreuse;
+      left: 2px;
+      top: 2px;
+    }
+    
+    </style>
+    <!-- color: add text color in declared area. -->
+    <!-- bg-color: add bg-color in declared area. -->
+</head>
+
+<body>
+
+<!-- Site navigation menu -->
+<ul class="navbar">
+  <li><a href="index.html">Home page</a>
+  <li><a href="musings.html">Musings</a>
+  <li><a href="town.html">My town</a>
+  <li><a href="links.html">Links</a>
+</ul>
+
+<!-- Shows the result of the examples(div) above. -->
+<div>
+  <!-- <section> -->
+    <!-- <p>HUEHUEHUE</p> -->
+  <!-- </section> -->
+</div>
+
+<!-- Main content -->
+<h1>My first styled page</h1>
+
+<p>Welcome to my styled page!
+
+<p>It lacks images, but at least it has style.
+And it has links, even if they don't go
+anywhere&hellip;
+
+<p class="font-size-2">There should be more here, but I don't know
+what yet.
+
+<!-- Sign and date the page, it's only polite! -->
+<address>Made 5 April 2004<br>
+  by myself.</address>
+
+</body>
+</html>

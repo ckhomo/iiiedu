@@ -1,0 +1,50 @@
+@media screen and (max-width: 900px){
+/* @media: DETECT device screen size! */
+/* When screen-width <= 900px: body becomes RED. */
+    body{
+        color:red;
+    }
+
+    div.one-third {
+    /* 95/2 = 47.5% */
+    /* 47.5 +5 +47.5=100 */
+        width: 47.5%;
+    }
+
+    div.one-third-second {
+    /* if no setting 2nd margin to 0:*/
+    /* 47.5 +5 +47.5 "+5" =105, 2nd pic will go next row. */
+        margin: 0;
+    }
+
+    div.one-third-last {
+        clear: both;
+        float: none;
+        width: auto;/* Allow last pic to adjust size automatically. */
+        padding: 20px 0 0 0;
+    }
+
+    div.nav ul li {
+		width: 25%;
+		border-bottom: 1px solid #bababa;
+	}/* Adjust navbar size at 900px. */
+}
+
+@media screen and (max-width: 500px){
+/* For smaller device: */
+
+    div.mobile-collapse{
+        width: auto;
+        float: none;
+        margin-right: 0;
+    }
+
+    .hide-mobile{
+        display: none;
+    }
+
+    div.nav ul li {
+		width: 50%;
+		font-size: 85%;
+	}/* Adjust navbar size at 500px. */
+}

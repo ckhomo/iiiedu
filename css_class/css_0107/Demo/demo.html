@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Checkbox</title>
+    <style>
+        .test:hover{
+            font-style: italic;
+        }
+
+        .test input[type='checkbox']:checked+label{
+        /* +label: click the lebel can also morph the font.  */
+            font-size: 10em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">
+        <input type="checkbox" id="chk1">
+        <label for="chk1">Login</label>
+    </div>
+</body>
+</html>

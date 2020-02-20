@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>First JavaScript</title>
+        <meta charset="usf-8">
+<!--if no declare script type: default will be JS.-->
+        <script type="text/JavaScript">
+/*declare test as function will work.*/
+        window.onload = function (){
+            test.innerText= Date();
+        }
+        document.write("JS is running!");
+/* declare "test" at here: too early! */
+        // test.innerText= Date();
+        </script>
+        <script src="./this.js"></script>
+
+    </head>
+    <body>
+<!-- test will not show properly here! -->
+        <p id="test">the text will not be shown.</p>
+    </body>
+</html>

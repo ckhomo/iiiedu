@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+.testTransform {
+    width: 80px;
+    height: 80px;
+    background-color: WhiteSmoke;
+    border: 1px solid Gray;
+    margin: 30px;
+    padding: 10px;
+    /* Transition: have 4 kinds of properties.*/
+    transition:
+        all 1s linear;
+        /* transform 1s linear; */
+}
+
+.testTransform:hover {
+    transform: rotate(360deg);
+    background-color: RoyalBlue;
+    /* Self-define width: */
+    /* width: 160px; */
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="testTransform">Test</div>
+
+</body>
+</html>

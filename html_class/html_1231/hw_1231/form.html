@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <!--Send data to back-end(a php file)-->
+    <!--method: "post" just shows data on screen.-->
+    <!--method: "get" will change your link(makes it longer)-->
+    <!--If no declaration: deault is "get" -->
+    <!-- <form method="get" action="http://server2020.epizy.com/echo.php"> -->
+    <form method="post" action="http://server2020.epizy.com/echo.php">
+      Your name:
+      <input type="text" name="userName"><br>
+      Password:
+      <input type="password" name="password"><br>
+      <input id="autoLoginCheckBoxId" name="autoLoginName" type="checkbox">
+      <!-- <input name="autoLoginCehckBoxId" type="checkbox"> -->
+      <!-- name is for sorting purpose -->
+      <!--"for" can only recognize "id" but not "name"!!-->
+      <label for="autoLoginCheckBoxId">Auto Login</label>
+      <!-- "for" links the text to corresponded input object.-->
+      <br>
+      City:
+      <input type="radio" id="taipei"    name="city" value="tp"><label for="taipei">Taipei</label>
+      <input type="radio" id="taichung"  name="city" value="tc"><label for="taichung">Taichung</label>
+      <input type="radio" id="tainan"    name="city" value="tn"><label for="tainan">Tainan</label>
+      <input type="radio" id="kaoshiung" name="city" value="ks"><label for="kaoshiung">Kaoshiung</label>
+      <!-- data inside "value" and "name" can be sent to back-end -->
+      <!--name for back, id for front!-->
+      <br>
+      <!--A scroll list is a better and more simple solution!-->
+      <select name="city_0">
+          <option value="tp">Taipei</option>
+          <option value="tc">Taichung</option>
+          <option value="tn">Tainan</option>
+          <option value="ks">kaoshiung</option>
+      </select>
+
+      <input type="submit" value="OK"     name="okorcancel">
+      <input type="submit" value="Cancel" name="okorcancel">
+      <!-- summit & button: button don't send data to back-end but submit do.-->
+    </form>
+
+</body>
+</html>
