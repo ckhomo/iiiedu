@@ -33,6 +33,10 @@
                 var s = $("#aTextField").prop("value", "Hello!");
 				// 一樣是 $.prop(), 250 與 260 差別在哪?
 
+                //250: #aTextField內之value(textbox內填值), append時僅貼上內容物
+                //260: #aTextField之value放入hello, append時會貼上textbox+內容物
+
+
 
 // 270
                 var s = $("input[name='radioGroup']").eq(2).attr("checked", "checked");

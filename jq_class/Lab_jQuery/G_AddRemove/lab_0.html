@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Lab</title>
@@ -7,32 +8,33 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/jquery.toast.css">
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="row">
+        <div class="row">
 
-        <div class="col-sm-4">
-            <h2>最新消息</h2>
-            <ul id="latestNews" class="list-group">
-                <li class="list-group-item">First item</li>
-                <li class="list-group-item">Second item</li>
-                <li class="list-group-item">Third item</li>
-            </ul>
-        </div>
+            <div class="col-sm-4">
+                <h2>最新消息</h2>
+                <ul id="latestNews" class="list-group">
+                    <li class="list-group-item">First item</li>
+                    <li class="list-group-item">Second item</li>
+                    <li class="list-group-item">Third item</li>
+                </ul>
+            </div>
 
-        <div class="col-sm-4">
-            &nbsp;
-        </div>
+            <div class="col-sm-4">
+                &nbsp;
+            </div>
 
-        <div class="col-sm-4">
-            &nbsp;
-        </div>
+            <div class="col-sm-4">
+                &nbsp;
+            </div>
 
-    </div>  <!-- end of row -->
+        </div> <!-- end of row -->
 
-</div> <!-- end of container -->
+    </div> <!-- end of container -->
 
 
     <script src="js/jquery.js"></script>
@@ -41,42 +43,96 @@
 
     <script>
 
-// 使用方式:
-// showToast("標題", "提示文字") 例如:
-// showToast("Hint", "請點一下正確的圖案");
-function showToast(heading, message) {
-    $.toast({
-        text: message, // Text that is to be shown in the toast
-        heading: heading, // Optional heading to be shown on the toast
-        icon: 'warning', // Type of toast icon
-        showHideTransition: 'fade', // fade, slide or plain
-        allowToastClose: true, // Boolean value true or false
-        hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
-        stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
-        position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
-        textAlign: 'left',  // Text alignment i.e. left, right or center
-        loader: true,  // Whether to show loader or not. True by default
-        loaderBg: '#9ec600',  // Background color of the toast loader
-        beforeShow: function () { }, // will be triggered before the toast is shown
-        afterShown: function () { }, // will be triggered after the toat has been shown
-        beforeHide: function () { }, // will be triggered before the toast gets hidden
-        afterHidden: function () { }  // will be triggered after the toast has been hidden
-    });
-}
+        // 使用方式:
+        // showToast("標題", "提示文字") 例如:
+        // showToast("Hint", "請點一下正確的圖案");
+        function showToast(heading, message) {
+            $.toast({
+                text: message, // Text that is to be shown in the toast
+                heading: heading, // Optional heading to be shown on the toast
+                icon: 'warning', // Type of toast icon
+                showHideTransition: 'fade', // fade, slide or plain
+                allowToastClose: true, // Boolean value true or false
+                hideAfter: 3000, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+                stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+                position: 'top-right', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+                textAlign: 'left',  // Text alignment i.e. left, right or center
+                loader: true,  // Whether to show loader or not. True by default
+                loaderBg: '#9ec600',  // Background color of the toast loader
+                beforeShow: function () { }, // will be triggered before the toast is shown
+                afterShown: function () { }, // will be triggered after the toat has been shown
+                beforeHide: function () { }, // will be triggered before the toast gets hidden
+                afterHidden: function () { }  // will be triggered after the toast has been hidden
+            });
+        }
 
 
-$(function () {
+        $(function () {
 
-    // Lab 程式:
+            // Lab 程式:
 
-    var newsList =
-        [
-            { ymd: "2017-01-01", title: "Item 1" },
-            { ymd: "2017-01-01", title: "Item 2" },
-            { ymd: "2017-01-02", title: "Item 3" },
-            { ymd: "2017-01-03", title: "Item 4" },
-            { ymd: "2017-01-04", title: "Item 5" }
-        ];
+            var newsList =
+                [
+                    { ymd: "2017-01-01", title: "Item 1" },
+                    { ymd: "2017-01-01", title: "Item 2" },
+                    { ymd: "2017-01-02", title: "Item 3" },
+                    { ymd: "2017-01-03", title: "Item 4" },
+                    { ymd: "2017-01-04", title: "Item 5" }
+                ];
+
+            // for (var i = 0; i < newsList.length; i++) {
+            //     var content_ttl = newsList[i].title;
+            //     var content_msg = newsList[i].ymd;
+            //     showToast(content_ttl, content_msg);
+            // }
+
+            $.each(newsList, function (key, obj) {
+                // var content_ttl = obj.title;
+                // var content_msg = obj.ymd;
+                // showToast(content_ttl, content_msg);
+            })
+
+
+            //Clear #latestNews
+            $("#latestNews li").remove();
+
+            //append new list.
+            $.each(newsList, function (key, obj) {
+                var newsText = obj.title + "[" + obj.ymd + "]";
+                var liHtml = $('<li></li>')
+                    .text(newsText)
+                    .addClass('list-group-item');
+                // $(SELECTOR).append(CONTENT) (接在selector之內)
+                $('#latestNews').append(liHtml);
+                // $(CONTENT).appendTo(SELECTOR) (接在selector之內)
+                // $(liHtml).appendTo('#latestNews');
+
+                // $(selector).after(content) (接在selector之外)
+            })
+
+            //Clear content by double-clicking.
+            $("#latestNews li").dblclick(function () {
+                //remove: 移除
+                // var $li = $(this).remove();
+
+                //detach: 分離
+                // var $li = $(this).detach();
+
+                //.index(element): 傳入參數可為空
+                // 回傳 #latestNews li(即$(this)) 底下該欄位之位置
+                // 若不存在: 回傳-1
+                var iIndex = $(this).index();
+                showToast("", iIndex);
+                var $li = $("#latestNews li")
+                    .eq(iIndex)
+                    .detach();           
+                $("#latestNews").append($li);
+            })
+            //The .detach() method is the same as .remove(),
+            //except that .detach() keeps all jQuery data
+            //associated with the removed elements.
+            //This method is useful when removed elements
+            //are to be reinserted into the DOM at a later time.
 
 
 
@@ -92,9 +148,10 @@ $(function () {
 
 
 
-})  // end of init.
+        })  // end of init.
 
     </script>
 
 </body>
+
 </html>

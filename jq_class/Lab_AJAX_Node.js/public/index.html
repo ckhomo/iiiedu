@@ -44,8 +44,10 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="button1id"></label>
                         <div class="col-md-8">
-                            <button type="button" id="button1id" name="button1id" class="btn btn-danger" onclick='MakeRequestSync()'>Hello</button>
-                            <button type="button" id="button2id" name="button2id" class="btn btn-success" onclick='MakeRequestAsync()'>Hello (AJAX)</button> &nbsp;
+                            <button type="button" id="button1id" name="button1id" class="btn btn-danger"
+                                onclick='MakeRequestSync()'>Hello</button>
+                            <button type="button" id="button2id" name="button2id" class="btn btn-success"
+                                onclick='MakeRequestAsync()'>Hello (AJAX)</button> &nbsp;
                             <span id='ResponseDiv'></span>
                         </div>
                     </div>
@@ -73,7 +75,8 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="button1id"></label>
                         <div class="col-md-8">
-                            <button type="button" id="getButton" name="getButton" class="btn btn-success">Hello -- $.get()</button> &nbsp;
+                            <button type="button" id="getButton" name="getButton" class="btn btn-success">Hello --
+                                $.get()</button> &nbsp;
                             <span id='reportSpan'></span>
                         </div>
                     </div>
@@ -88,20 +91,23 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="firstNameTextBox">FirstName:</label>
                         <div class="col-md-4">
-                            <input name="firstNameTextBox" id="firstNameTextBox" type="text" class="form-control input-md">
+                            <input name="firstNameTextBox" id="firstNameTextBox" type="text"
+                                class="form-control input-md">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="lastNameTextBox">LastName:</label>
                         <div class="col-md-4">
-                            <input name="lastNameTextBox" id="lastNameTextBox" type="text" class="form-control input-md">
+                            <input name="lastNameTextBox" id="lastNameTextBox" type="text"
+                                class="form-control input-md">
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" for="button1id"></label>
                         <div class="col-md-8">
-                            <button type="button" id="postButton" name="postButton" class="btn btn-success">Hello -- $.post(), $.ajax()</button> &nbsp;
+                            <button type="button" id="postButton" name="postButton" class="btn btn-success">Hello --
+                                $.post(), $.ajax()</button> &nbsp;
                             <span id='resultSpan'></span>
                         </div>
                     </div>
@@ -119,34 +125,49 @@
     <script type='text/javascript' src='js/ajax_concept.js'></script>
 
     <script>
-        $(document).ready(function() {
-            $(".nav-tabs a").click(function() {
+        $(document).ready(function () {
+            $(".nav-tabs a").click(function () {
                 $(this).tab('show');
             });
 
 
-            $("#getButton").on("click", function() {
+            $("#getButton").on("click", function () {
                 var s = $("#nameTextBox").val();
 
+                $.get("/hello/" + s, function (e) {
+                    $("#reportSpan").text(e);
+                })
 
 
-
-
-                $("#reportSpan").text(s);
+                // $("#reportSpan").text(s);
             })
 
 
 
-            $("#postButton").on("click", function() {
+            $("#postButton").on("click", function () {
                 var dataToServer = {
                     firstName: $("#firstNameTextBox").val(),
                     lastName: $("#lastNameTextBox").val()
                 }
 
+                //jQuery:
+                // $.post("/test", dataToServer, function (e) {
+                //     $('#resultSpan').text(e);
+                // })
 
+                //ajax:
+                $.ajax({
+                    type: 'post',
+                    url: '/test',
+                    // data: dataToServer,
+                    data: JSON.stringify(dataToServer),
+                    contentType: "application/json",
+                    success: function (e) {
+                        $('#resultSpan').text(e);
+                    }
+                })
 
-
-                $("#resultSpan").text(JSON.stringify(dataToServer));
+                // $("#resultSpan").text(JSON.stringify(dataToServer));
             })
 
 
