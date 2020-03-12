@@ -5,6 +5,7 @@ Lab: 綜合演練
 
 執行下列 SQL Script 以建立本次練習所需的資料庫。
 
+DROP DATABASE IF EXISTS labDB;
 create database labDB default character set utf8;
 use labDB;
 create table news
@@ -16,6 +17,24 @@ create table news
 insert into news (ymd, title) values 
   ('2017-05-01', 'News A'),
   ('2017-05-02', 'News B'),
+  ('2017-05-01', 'News A'),
+  ('2017-05-02', 'News B'),
+  ('2017-05-01', 'News A'),
+  ('2017-05-02', 'News B'),
+  ('2017-05-01', 'News A'),
+  ('2017-05-02', 'News B'),
+  ('2017-05-01', 'News A'),
+  ('2017-05-02', 'News B'),
+  ('2017-05-03', 'News C'),
+  ('2017-05-04', 'News D'),
+  ('2017-05-03', 'News C'),
+  ('2017-05-04', 'News D'),
+  ('2017-05-03', 'News C'),
+  ('2017-05-04', 'News D'),
+  ('2017-05-03', 'News C'),
+  ('2017-05-04', 'News D'),
+  ('2017-05-03', 'News C'),
+  ('2017-05-04', 'News D'),
   ('2017-05-03', 'News C'),
   ('2017-05-04', 'News D'),
   ('2017-05-05', 'News E');
