@@ -184,10 +184,12 @@
             var newsList = [];
             var assigned_index = -1;
 
-            $.get("/home/news", function (e) {
+            function getNewList(){
+                $.get("/home/news", function (e) {
                 newsList = JSON.parse(e);
                 refreshNewsUI();
             })
+            }
 
             function refreshNewsUI() {
                 //清空
@@ -228,20 +230,21 @@
                     //執行刪除: DELETE
                     $.ajax({
                         type: 'delete',
-                        url: 'home/news',
-                        data: newsList[индекс]
-                    }).then(function (e) {
-                        showToast(e);
+                        url: '/home/news',
 
+                        //若不指定contentType: 會自動偵測
+                        contentType: 'application/json',
+                        data: JSON.stringify(newsList[индекс])
+                        // data: newsList[индекс]
+                    }).then(function (e) {                     
                         //刪除後重新GET
-                        $.get("/home/news", function (e) {
-                            newsList = JSON.parse(e);
-                            refreshNewsUI();
-                        })
+                        getNewList();
+                        showToast(e);
                     })
                 })
             }//End of refreshNewsUI().
 
+            getNewList();
             //新增:跳出空modal
             $("#newItem").click(function () {
                 assigned_index = -1;
@@ -252,36 +255,40 @@
                 });
             })
 
-            //modal內確定:更新資料
+            //更新資料
             $('#okButton').click(function () {
-                if (assigned_index >= 0) { //從modal進入:
+                if (assigned_index >= 0) {//讀值入modal
                     newsList[assigned_index].title = $("#titleTextBox").val();
                     newsList[assigned_index].ymd = $("#ymdTextBox").val();
                     refreshNewsUI();
                     $('#newsModal').modal('hide');
 
-                    //讀進modal內textbox後: PUT
+                    //從修改進入: PUT
                     $.ajax({
                         type: 'put',
-                        url: 'home/news',
-                        data: newsList[assigned_index]
+                        url: '/home/news',
+
+                        contentType: 'application/json',
+                        data: JSON.stringify(newsList[assigned_index])
+                        // data: newsList[assigned_index]
                     }).then(function (e) {
                         showToast(e);
                     })
-                } else {//從新增進入: POST
+                } else {
                     var newItem = {
                         title: $('#titleTextBox').val(),
                         ymd: $('#ymdTextBox').val()
                     }
+                    //從新增進入: POST
                     $.ajax({
                         type: 'post',
                         url: '/home/news',
-                        data: newItem,
+
+                        contentType: 'application/json',
+                        data: JSON.stringify(newItem)
+                        // data: newItem,
                     }).then(function (e) {
-                        $.get("/home/news", function (e) {
-                            newsList = JSON.parse(e);
-                            refreshNewsUI();
-                        })
+                        getNewList();
                         showToast(e);
                     })
                     $('#newsModal').modal('hide');
