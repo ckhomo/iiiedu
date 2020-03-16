@@ -125,9 +125,16 @@
             <h1>About</h1>
         </div>
         <div data-role="content">
+            <!-- <a href="#" id="mytestbtn" data-role="button">TEST</a> -->
             <p>文章作者 :錢達智(wolfgang.chien@gmail.com)。</p>
         </div>
     </div>
+
+    <script>
+        $("mytestbtn").click(function(){
+            $.mobile.changePage("../Lab_ListView/Lab_ListView_OK.html");
+        })
+    </script>
 </body>
 
 </html>
