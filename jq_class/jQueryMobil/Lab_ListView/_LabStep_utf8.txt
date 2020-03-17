@@ -95,9 +95,9 @@
 
 
 
-5-1	在 Boston 紅襪隊前面加入一個新的 <li>美聯東區</li> 項目，並且套用 data-role="list-divider"
-5-2	在 Detroit 老虎隊前面加入一個新的 <li>美聯中區</li> 項目，並且套用 data-role="list-divider"
-5-3	在 Oakland 運動家隊前面加入一個新的 <li>美聯西區</li> 項目，並且套用 data-role="list-divider"
+5-1	在 Boston 紅襪隊前面加入一個新的 <li>美聯東區<li> 項目，並且套用 data-role="list-divider"
+5-2	在 Detroit 老虎隊前面加入一個新的 <li>美聯中區<li> 項目，並且套用 data-role="list-divider"
+5-3	在 Oakland 運動家隊前面加入一個新的 <li>美聯西區<li> 項目，並且套用 data-role="list-divider"
 
 			<ul data-role="listview" data-inset="true"
 				data-filter="true" data-filter-placeholder="請輸入隊名:" >

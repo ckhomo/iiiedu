@@ -4,54 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HTML5 TAGS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <style>
-    .pgsdiv {
-        text-align: center;
-    }
-
     progress {
         height: 5em;
-        width: 80%;
+        width: 60em;
         border-radius: 30px;
     }
 
     progress::-webkit-progress-bar {
-        /* style rules */
-        /* background: chartreuse; */
         border-radius: 30px;
         background-color: #868181;
     }
 
     progress::-webkit-progress-value {
-        /* style rules */
         background: lightseagreen;
         /* border-radius: 30px 0 0 30px; */
         border-radius: 30px;
 
+    }
+
+    .mybtn {
+        height: 5em;
+        width: 5em;
+        float: left;
+        margin: 2px;
+    }
+
+    .trydlg {
+        /* margin: 0; */
+        /* position: absolute; */
+        margin-top: 2px;
+        margin-right: 10px;
+        height: max-content;
+        width: max-content;
+        /* top: 40%; */
+    }
+
+    .trymrk {
+        background-color: transparent;
+        font-style: italic;
+        font-size: larger;
+        font-weight: bolder;
+    }
+
+    button:disabled .trymrk {
+        color: inherit;
+        /* color: rgb(170, 170, 170); */
+    }
+
+    button {
+        font-size: 1.5em;
+    }
+
+    hr {
+        clear: both;
+        border: none;
+        height: 5px;
+        background-color: black;
+    }
+
+    #trymtr {
+        height: 2em;
+        width: 50em;
+        vertical-align: middle;
+    }
+
+    label[for="trymtr"] {
+        vertical-align: middle;
+        font-size: 1.5em;
     }
 </style>
 
 <body>
 
     <!-- HTML5: PROGRESS -->
-    <button id="startpgs" style="height: 5em; width:5em;float:left;margin: 2px;">START</button>
-    <button id="stoppgs" style="height: 5em; width:5em;float:left;;margin: 2px;">STOP</button>
-
-    <div class="pgsdiv">
+    <dialog class="trydlg">
         <progress id="trypgs" value="0" max="100">
-            text here will not be shown.
         </progress>
+    </dialog>
+
+    <div align="center">
+        <button id="startpgs" class="mybtn">ST<mark class="trymrk">A</mark>RT</button>
+        <button id="stoppgs" class="mybtn">RE<mark class="trymrk">S</mark>ET</button>
     </div>
+    <hr>
+
+    <!-- HTML5: METER -->
+    <div align="center">
+        <button id="addmtr" class="mybtn">ADD<mark class="trymrk">5</mark></button>
+        <button id="minmtr" class="mybtn">MINUS<mark class="trymrk">5</mark></button>
+    </div>
+
+    <div style="text-align: center;">
+        <label for="trymtr">Pressure gauge:</label>
+        <meter id="trymtr" value="18" min="0" max="100" low="15" high="85" optimum="45">random text
+        </meter>
+    </div>
+    <hr>
+
+
+
 
 
 </body>
 <script>
+    var current_num = $("#trymtr").val(),
+        max = $("#trymtr").attr("max"),
+        min = $("#trymtr").attr("min");
 
+    function checkBorder(number) {
+        if (number >= max) {
+            $('#addmtr').attr("disabled", "");
+            $('#minmtr').removeAttr("disabled");
+        } else if (number <= min) {
+            $('#minmtr').attr("disabled", "");
+            $('#addmtr').removeAttr("disabled");
+        } else {
+            $('#addmtr').removeAttr("disabled");
+            $('#minmtr').removeAttr("disabled");
+        };
+    }
+
+    $('#addmtr').on("click", function () {
+        current_num += 5;
+        $("#trymtr").val(current_num);
+        checkBorder(current_num);
+    });
+
+    $('#minmtr').on("click", function () {
+        current_num -= 5;
+        $("#trymtr").val(current_num);
+        checkBorder(current_num);
+    });
 
     $("#startpgs").on("click", function () {
+        $('.trydlg').attr("open", "");
         var pgs = $('#trypgs'),
             max = pgs.attr('max'),
             value = pgs.val(),
@@ -78,6 +168,7 @@
             addValue = $('#trypgs').val(value);
             $('.progress-value').html(value + '%');
             clearInterval(animate);
+            $('.trydlg').removeAttr("open");
         })
     });
 
