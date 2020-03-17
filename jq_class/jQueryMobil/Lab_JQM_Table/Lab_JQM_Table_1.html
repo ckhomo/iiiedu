@@ -14,7 +14,7 @@ http://api.jquerymobile.com/table-columntoggle
   <title>Table Lab</title>
   <link rel="stylesheet" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
   <script src="jquery-1.9.1.min.js"></script>
-  <script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+  <script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.js"></script>
 </head>
 <style>
   .table-stroke>thead th {
@@ -24,11 +24,32 @@ http://api.jquerymobile.com/table-columntoggle
   #MustHaveID {
     border-bottom: 2px solid rgb(192, 192, 192);
   }
+
+  .ui-table-columntoggle-btn {
+    display: none;
+  }
+
+  .ui-table-columntoggle-btn-ALT {
+    float: right;
+    margin-bottom: .8em
+  }
 </style>
 
 <body>
   <div data-role="page">
     <div data-role="content">
+      
+      <!-- 自訂按鈕內容: -->
+      <a href="#MustHaveID-popup"
+        class="ui-table-columntoggle-btn-ALT ui-btn ui-btn-up-c ui-shadow ui-btn-corner-all ui-mini" data-rel="popup"
+        data-mini="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span">
+        <span class="ui-btn-inner">
+          <span class="ui-btn-text">
+            請選擇欄位...
+          </span>
+        </span>
+      </a>
+
       <table id="MustHaveID" class="ui-responsive table-stroke ui-body-c" data-role="table" data-mode="columntoggle">
         <thead>
           <tr>
@@ -125,6 +146,9 @@ http://api.jquerymobile.com/table-columntoggle
   $('#MustHaveID tbody tr:nth-child(3n-1)').addClass('ui-bar-c');
   // $('#MustHaveID tbody tr:nth-child(3n)').addClass('ui-bar-e');
   $('#MustHaveID tr:nth-child(1)').addClass('ui-bar-b');
+
+  // var btntxt = document.getElementsByClassName('ui-btn-text');
+  // document.getElementsByClassName('ui-btn-text').innerHTML = "請選擇欄位...";
 
 </script>
 
