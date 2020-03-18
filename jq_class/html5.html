@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML5 TAGS</title>
+    <!-- BASE: DEFAULT URL. -->
+    <!-- (1 per page, thus not really useful.)-->
+    <!-- <base href="https://zh.wikipedia.org/wiki/" target=" "> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <style>
@@ -15,14 +18,14 @@
     }
 
     progress::-webkit-progress-bar {
-        border-radius: 30px;
+        border-radius: 0 30px 30px 0;
         background-color: #868181;
     }
 
     progress::-webkit-progress-value {
         background: lightseagreen;
         /* border-radius: 30px 0 0 30px; */
-        border-radius: 30px;
+        border-radius: 0 30px 30px 0;
 
     }
 
@@ -66,6 +69,14 @@
         background-color: black;
     }
 
+    details {
+        cursor: pointer;
+    }
+
+    details p {
+        cursor: auto;
+    }
+
     #trymtr {
         height: 2em;
         width: 50em;
@@ -75,6 +86,16 @@
     label[for="trymtr"] {
         vertical-align: middle;
         font-size: 1.5em;
+    }
+
+    .tryimg {
+        /* 目標: 圖片縮放後仍能保持精確area座標 */
+        /* solution: jQuery ^ JS 改座標值 */
+        width: 75%;
+    }
+
+    area:hover {
+        cursor: pointer;
     }
 </style>
 
@@ -105,9 +126,109 @@
     </div>
     <hr>
 
+    <!-- HTML5: RUBY -->
+    <div style="font-size: 1.5em;text-align: center;">
+        <!-- Summary: work with details. -->
+        <details>
+            <summary>
+                <!-- href need <base> at <head> to work. -->
+                <abbr title="ぎおんしょうじゃ"><a href="祗园精舍">祇園精舎</a></abbr>とは『
+                <abbr title="へいけものがたり"><a href="平家物语">平家物語</a></abbr>』冒頭部分です。
+            </summary>
+            <p>
+                <ruby>
+                    祗園<rt>ぎおん</rt>
+                    精舎<rt>しょうじゃ</rt>
+                    の<rt></rt>
+                    鐘<rt>かね</rt>
+                    の<rt></rt>
+                    声<rt>こえ</rt>
+                    、<rt></rt>
+                    諸行無常<rt>しょぎょうむじょう</rt>
+                    の<rt></rt>
+                    響<rt>ひび</rt>
+                    きあり。<rt></rt>
+                </ruby>
+                <br>
+                <ruby>
+                    娑羅<rt>しゃら</rt>
+                    双樹<rt>そうじゅ</rt>
+                    の<rt></rt>
+                    花<rt>はな</rt>
+                    の<rt></rt>
+                    色<rt>いろ</rt>
+                    、<rt></rt>
+                    盛者必衰<rt>じょうしゃひっすい</rt>
+                    の<rt></rt>
+                    理<rt>ことわり</rt>
+                    をあらは（わ）す。<rt></rt>
+                </ruby>
+                <br>
+                <ruby>
+                    おごれる<rt></rt>
+                    人<rt>ひと</rt>
+                    も<rt></rt>
+                    久<rt>ひさ</rt>
+                    しからず、<rt></rt>
+                    唯春<rt>ただはる</rt>
+                    の<rt></rt>
+                    夜<rt>よる</rt>
+                    の<rt></rt>
+                    夢<rt>ゆめ</rt>
+                    の<rt></rt>
+                    ごとし。<rt></rt>
+                </ruby>
+                <br>
+                <ruby>
+                    たけき<rt></rt>
+                    者<rt>もの</rt>
+                    も<rt></rt>
+                    遂<rt>つい</rt>
+                    にはほろびぬ、<rt></rt>
+                    偏<rt>ひとえ</rt>
+                    に<rt></rt>
+                    風<rt>かぜ</rt>
+                    の<rt></rt>
+                    前<rt>まえ</rt>
+                    の<rt></rt>
+                    塵<rt>ちり</rt>
+                    に<rt></rt>
+                    同<rt>おな</rt>
+                    じ。<rt></rt>
+                </ruby>
+            </p>
+        </details>
+    </div>
+    <hr>
+    <!-- INPUT & OUTPUT: -->
+    <div style="font-size: 1.5em; text-align: center;">
+        <form oninput="ab.value=parseInt(int_a.value)+parseInt(int_b.value)" style="vertical-align: middle;">
+            <span>20</span>
+            <input type="range" min="20" max="80" id="int_a" style="top:4px;position:relative;">
+            <span>80 + </span>
+            <input type="number" id="int_b" value="50" style="height: 1.5em; bottom: 3px;position:relative;">
+            <span> = </span>
+            <output name="ab" for="int_a int_b"></output>
+        </form>
+    </div>
 
-
-
+    <hr>
+    <!-- MAP AND AREA: -->
+    <div style="text-align: center;">
+        <img class="tryimg" id="tryimg1" src="p1.jpg" alt="back_side" usemap="#trymap1">
+        <map name="trymap1">
+            <area shape="poly" coords="264,268,294,315,333,290,301,249" alt="翠館" title="翠館">
+            <area shape="poly" coords="199,305,234,349,264,322,232,280" alt="寶樹堂" title="寶樹堂">
+            <area shape="poly" coords="1370,566,1325,582,1307,547,1345,527" alt="幽芳" title="幽芳">
+        </map>
+        <img class="tryimg" id="tryimg2" src="p2.jpg" alt="front_side" usemap="#trymap2">
+        <map name="trymap2">
+            <area shape="poly" coords="874,558,883,581,908,569,894,547" alt="韻" title="韻">
+            <area shape="poly" coords="837,575,851,606,882,588,865,562" alt="待月" title="待月">
+            <area shape="poly" coords="735,170,712,180,700,201,697,217,701,230,709,240,731,233,742,211,746,197,745,182"
+                alt="歲月靜好" title="歲月靜好">
+        </map>
+    </div>
 
 </body>
 <script>
@@ -172,28 +293,60 @@
         })
     });
 
+    // 動態調整area coords
+    adjustCoords("tryimg2");
+    adjustCoords("tryimg1");
 
-    // $(document).ready(function () {
-    //     var progressbar = $('#progressbar'),
-    //         max = progressbar.attr('max'),
-    //         time = (1000 / max) * 5,
-    //         value = progressbar.val();
+    //onresize觸發次數過多，設置定時器
+    var timeout = null;
+    //頁面大小變化，重新加載頁面以刷新MAP
+    window.onresize = function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            window.location.reload();
+        }, 100);
+    }
 
-    //     var loading = function () {
-    //         value += 1;
-    //         addValue = progressbar.val(value);
+    //獲取MAP中元素屬性  
+    function adjustCoords(target_id) {
+        var map = document.getElementById(target_id);
 
-    //         $('.progress-value').html(value + '%');
+        //取得原尺寸
+        var origin_w = map.naturalWidth;
+        var origin_h = map.naturalHeight;
 
-    //         if (value == max) {
-    //             clearInterval(animate);
-    //         }
-    //     };
+        //取得現在尺寸
+        // 高度取不到: 相似形(非等比縮放時失效!)
+        var map_w = $("#" + target_id).prop("clientWidth");
+        // var map_h = $("#" + target_id).prop("clientHeight");
+        // var map_w = map.getBoundingClientRect().width;
+        // var map_h = map.getBoundingClientRect().height;
+        var map_h = Math.round(origin_h * (map_w / origin_w));
+        console.log(map_w);
+        console.log(map_h);
 
-    //     var animate = setInterval(function () {
-    //         loading();
-    //     }, time);
-    // });
+        var areas = $("#" + target_id + "+map area");
+        var coords;
+
+        // 對各area之coords進行縮放:
+        areas.each(function () {
+            coords = this.coords;
+            coords = coords.split(",");
+            // console.log(coords);
+            var result = new String();
+            for (var i = 0; i < coords.length; i += 2) {
+                coords[i] = Math.round(coords[i] * (map_w / origin_w));
+                coords[i + 1] = Math.round(coords[i + 1] * (map_h / origin_h));
+                result += coords[i];
+                result += ",";
+                result += coords[i + 1];
+                if (i + 2 != coords.length) {
+                    result += ",";
+                }
+            }
+            this.coords = result;
+        });
+    }
 </script>
 
 </html>

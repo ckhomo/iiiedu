@@ -1,37 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>The SD3 Security Framework</title>
-<link rel="stylesheet"
-	href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
-<script src="jquery-1.9.1.min.js"></script>
-<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	<meta charset="UTF-8">
+	<title>The SD3 Security Framework</title>
+	<link rel="stylesheet" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
+	<script src="jquery-1.9.1.min.js"></script>
+	<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
-<style>
-.box {
-	float: left;
-	border: 1px solid gray;
-	background-color: lightgray;
-	width: 50px;
-	height: 50px;
-	padding: 20px;
-	margin: 10px;
-	border: 1px solid gray;
-}
-</style>
+	<style>
+		.box {
+			float: left;
+			border: 1px solid gray;
+			background-color: lightgray;
+			width: 50px;
+			height: 50px;
+			padding: 20px;
+			margin: 10px;
+			border: 1px solid gray;
+		}
+	</style>
 
-<script>
-	// chance "click" to: tap, taphold, swipe, swipeleft, swiperight
-	$(document).on("pageinit", "#testPage", function() {
-		$(".box").on("click", function() {
-			$(this).hide();
+	<script>
+		// chance "click" to: tap, taphold, swipe, swipeleft, swiperight
+		$(document).on("pageinit", "#testPage", function () {
+			$(".box").on("click", function () {
+				alert("click!");
+				$(this).hide();
+			});
 		});
-	});
-</script>
+
+		$(document).on("swipe", ".box", function () {
+			alert("swipe!");
+			$(this).hide();
+		})
+	</script>
 
 </head>
-<body>
+
+<body style="-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;">
 	<div data-role="page" id="testPage">
 		<div data-role="content">
 
@@ -47,4 +59,5 @@
 
 		</div>
 </body>
+
 </html>
